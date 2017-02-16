@@ -15,7 +15,7 @@ typedef struct process {
   pid_t pid;
 } process;
 
-void *process_copy_constructor(process *elem) {
+process *process_copy_constructor(process *elem) {
   process* retl = NULL;
   retl->command = elem->command;
   retl->status = elem->status;
@@ -32,7 +32,7 @@ void process_destructor(process *elem) {
 	free(elem);
  }
 
-void *process_default_constructor(void) {
+process *process_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(process));
 }
@@ -43,7 +43,7 @@ int shell(int argc, char *argv[]) {
 
 	//create a status tracker
 	
-	vector *proc = vector_create(process_copy_constructor, process_destructor, process_default_constructor);
+	vector *proc = vector_create((void*)process_copy_constructor, (void)process_destructor,(void*) process_default_constructor);
 	
 
 	
