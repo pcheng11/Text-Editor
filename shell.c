@@ -25,6 +25,9 @@ int shell(int argc, char *argv[]) {
 	}
 	else
 	{
+		int temp = 0;
+		while(!temp)
+	  {
 		pid_t main_pro = getpid();
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
@@ -36,8 +39,7 @@ int shell(int argc, char *argv[]) {
 		//see what is the command
 		if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
-		else
-			return 0;
+	 }
 		
 	}
   }
