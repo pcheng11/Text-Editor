@@ -36,6 +36,8 @@ int shell(int argc, char *argv[]) {
 		//see what is the command
 		if(strcmp(buffer, "cd") == 0)
 			print_no_directory("");
+		else
+			return 0;
 		
 	}
   }
