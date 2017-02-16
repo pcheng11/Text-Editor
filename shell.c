@@ -19,11 +19,8 @@ int shell(int argc, char *argv[]) {
 	int exit_ = 0;
 	while(exit_ == 0)
   {
-	if(getopt(argc, argv, "f") != -1)
-	{
 
-	}
-	else
+  	if(getopt(argc, argv, "f") != -1)
 	{
 		int temp = 0;
 		while(!temp)
@@ -42,6 +39,11 @@ int shell(int argc, char *argv[]) {
 	 }
 		
 	}
-  }
+
+	else
+	{
+
+	}
+	  }
   return 0;
 }
