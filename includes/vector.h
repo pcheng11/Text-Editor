@@ -56,6 +56,17 @@
 /* Forward declare vector structure. */
 typedef struct vector vector;
 
+/**
+ * 'INITIAL_CAPACITY' is the macro that will be used to set the capacity of the
+ * vector in vector_create().
+ */
+#define INITIAL_CAPACITY 16
+/**
+ * 'GROWTH_FACTOR' is how much the vector will grow by in automatic reallocation
+ * (2 means double).
+ */
+#define GROWTH_FACTOR 2
+
 // Member Functions:
 
 /**
