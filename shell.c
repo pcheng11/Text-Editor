@@ -84,7 +84,7 @@ int shell(int argc, char *argv[]) {
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
-			 print_process_info( (&vector_front(proc))->status, (&vector_font(proc))->pid, (&vector_front(proc))->command);
+			 print_process_info( (vector_get(proc, 0)->status, vector_get(proc,0)->pid, vector_front(proc,0)->command));
 
 		}
 		else
