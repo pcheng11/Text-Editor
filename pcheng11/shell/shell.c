@@ -42,7 +42,7 @@ int shell(int argc, char *argv[]) {
 		else
 		{
 			char *temp_dir = strdup(buffer + 3);
-			if(opendir(temp_dir == NULL))
+			if(opendir(temp_dir)== NULL)
 			{
 				print_no_directory(temp_dir);
 			}
