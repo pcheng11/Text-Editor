@@ -66,9 +66,9 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		//stock process
-			process *a = NULL;
+			process a;
 			a->command = argv[0];
-			int *temp_1 = malloc(sizeof(a->pid));
+			int *temp_1 = malloc(sizeof(a.pid));
 			*temp_1 = (int)main_pro;
 
 			
