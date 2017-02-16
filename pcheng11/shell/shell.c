@@ -15,7 +15,7 @@ typedef struct process {
   pid_t pid;
 } process;
 
-void *process_copy_constructor(void *elem) {
+void *process_copy_constructor(process *elem) {
   process* retl = NULL;
   retl->command = elem->command;
   retl->status = elem->status;
