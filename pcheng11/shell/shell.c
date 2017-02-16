@@ -15,8 +15,8 @@ typedef struct process {
   pid_t pid;
 } process;
 
-process *process_copy_constructor(process *elem) {
-  process * retl = NULL;
+void *process_copy_constructor(void *elem) {
+  void * retl = NULL;
   retl->command = elem->command;
   retl->status = elem->status;
   retl-> pid  = elem->pid;
@@ -26,13 +26,13 @@ process *process_copy_constructor(process *elem) {
 
 // This is the destructor function for string element.
 // Use this as destructor callback in vector.
-void process_destructor(process *elem) { 
+void process_destructor(void *elem) { 
 	free(elem->command);
 	free(elem->status);
 	free(elem);
  }
 
-process *process_default_constructor(void) {
+void *process_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(process));
 }
