@@ -36,9 +36,9 @@ int shell(int argc, char *argv[]) {
 
 	//create a status tracker
 	
-	vector *com = vector_create(string_copy_constructor, string_destructor, string_destructor);
+	vector *com = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 	
-	vector *stat = vector_create(string_copy_constructor, string_destructor, string_destructor);
+	vector *stat = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 
 	vector *p = vector_create(int_copy_constructor, int_destructor, int_destructor);
 	
