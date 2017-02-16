@@ -6,7 +6,9 @@
 #include "shell.h"
 #include "vector.h"
 #include <unistd.h>
-# include <string.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <string.h>
 typedef struct process {
   char *command;
   char *status;
@@ -39,7 +41,7 @@ int shell(int argc, char *argv[]) {
 			print_no_directory("");
 		else
 		{
-			char * temp_dir strdup(buffer + 3);
+			char *temp_dir = strdup(buffer + 3);
 			if(opendir(temp_dir == NULL))
 			{
 				print_no_directory(temp_dir);
