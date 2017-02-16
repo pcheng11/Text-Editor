@@ -20,7 +20,7 @@ int shell(int argc, char *argv[]) {
 	while(exit_ == 0)
   {
 
-  	if(argc = 1)
+  	if(argc == 1)
 	{
 		int temp = 0;
 		while(!temp)
