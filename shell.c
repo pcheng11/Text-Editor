@@ -29,6 +29,11 @@ int shell(int argc, char *argv[]) {
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
 		free(directory);
+		//get stdin
+		char *buffer = NULL;
+		size_t size = 0;
+		getline(&buffer, &size, 1);
+		
 	}
   }
   return 0;
