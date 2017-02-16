@@ -16,16 +16,34 @@ typedef struct process {
   pid_t pid;
 } process;
 
+void *string_copy_constructor(void *elem) {
+  char *str = elem;
+  assert(str);
+  return strdup(str);
+}
+
+// This is the destructor function for string element.
+// Use this as destructor callback in vector.
+void string_destructor(void *elem) { free(elem); }
+
+// This is the default constructor function for string element.
+// Use this as a default constructor callback in vector.
+void *string_default_constructor(void) {
+  // A single null byte
+  return calloc(1, sizeof(char));
+}
 
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
 	//input is not a file;
 
-	//create a status tracker
 	
 	
-	
+// create 3 vectors to keep track of process info
+	vector *pid_info = int_vector_create();
+	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 	
 
 	int exit_ = 0;
@@ -48,15 +66,18 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		//stock process
-			/*process *a = NULL;
+			process *a = NULL;
 			a->command = argv[0];
-			
-			a->pid = (int)main_pro;
+			int *temp_1 = malloc(sizeof(a->pid));
+			*temp_1 = (int)main_pro;
+
 			
 			//稍后需要判断
 			a->status = STATUS_RUNNING;
-			//vector_push_back(proc, a);
-			*/
+			vector_push_back(pid_info, temp_1);
+			vector_push_back(status_info, a->status);
+			vector_push_back(command_info, a->command);
+		
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
@@ -65,11 +86,11 @@ int shell(int argc, char *argv[]) {
 		if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 
-		//if(strcmp(buffer, "ps\n") == 0)
-		//{
-			// print_process_info( (vector_get(proc, 0)->status, vector_get(proc,0)->pid, vector_front(proc,0)->command));
+		if(strcmp(buffer, "ps\n") == 0)
+		{
+		 print_process_info( vector_get(status_info, 0), vector_get(pid_info,0), vector_front(command_info,0));
 
-		//}
+		}
 		else
 		{
 			char *temp_dir = strdup(buffer + 3);
