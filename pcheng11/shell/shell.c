@@ -33,6 +33,9 @@ int shell(int argc, char *argv[]) {
 		char *buffer = NULL;
 		size_t size = 0;
 		getline(&buffer, &size, stdin);
+		//see what is the command
+		if(strcmp( buffer, "cd") == 0)
+			print_no_directory("");
 		
 	}
   }
