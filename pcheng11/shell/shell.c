@@ -63,10 +63,10 @@ int shell(int argc, char *argv[]) {
 			a->command = argv[0];
 			vector_push_back(com, a->command);
 			a.pid = (int)main_pro;
-			vector_push_back(p, (int)a->pid);
+			vector_push_back(p, &(int)a->pid);
 			//稍后需要判断
 			a->status = STATUS_RUNNING;
-			vector_push_back(stat, (int)a->pid);
+			vector_push_back(stat, a->status);
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
