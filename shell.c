@@ -5,6 +5,7 @@
 #include "format.h"
 #include "shell.h"
 #include "vector.h"
+#include <uinstd.h>
 
 typedef struct process {
   char *command;
