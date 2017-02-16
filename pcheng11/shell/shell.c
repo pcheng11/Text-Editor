@@ -32,7 +32,7 @@ void process_destructor(process *elem) {
 	free(elem);
  }
 
-process *string_default_constructor(void) {
+process *process_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(process));
 }
@@ -84,7 +84,7 @@ int shell(int argc, char *argv[]) {
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
-			 print_process_info( vector_front(proc).status, vector_font(proc).pid, vector_front(proc).command);
+			 print_process_info( (&vector_front(proc))->status, (&vector_font(proc))->pid, (&vector_front(proc))->command);
 
 		}
 		else
