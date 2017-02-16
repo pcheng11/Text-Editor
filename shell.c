@@ -34,7 +34,7 @@ int shell(int argc, char *argv[]) {
 		size_t size = 0;
 		getline(&buffer, &size, stdin);
 		//see what is the command
-		if(strcmp(buffer, "cd") == 0)
+		if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 		else
 			return 0;
