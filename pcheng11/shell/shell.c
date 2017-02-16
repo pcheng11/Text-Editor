@@ -20,6 +20,7 @@ int shell(int argc, char *argv[]) {
 	while(exit_ == 0)
   {
 
+  	//stdin input
   	if(argc == 1)
 	{
 		int temp = 0;
@@ -36,10 +37,21 @@ int shell(int argc, char *argv[]) {
 		//see what is the command
 		if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
+		else
+		{
+			char * temp_dir strdup(buffer + 3);
+			if(opendir(temp_dir == NULL))
+			{
+				print_no_directory(temp_dir);
+			}
+			else
+				chdir(temp_dir);
+
+		}
 	 }
 		
 	}
-
+	//file input
 	if(getopt(argc, argv, "f") != -1)
 	{
 
