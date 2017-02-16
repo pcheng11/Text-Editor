@@ -79,7 +79,7 @@ int shell(int argc, char *argv[]) {
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
-			void print_process_info(vector_front(stat), vector_font(p), vector_front(com));
+			void print_process_info(&vector_front(stat), vector_font(p), &vector_front(com));
 
 		}
 		else
