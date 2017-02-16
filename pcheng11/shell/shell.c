@@ -15,19 +15,26 @@ typedef struct process {
   pid_t pid;
 } process;
 
-void *string_copy_constructor(void *elem) {
-  char *str = elem;
-  assert(str);
-  return strdup(str);
+process *process_copy_constructor(process *elem) {
+  process * retl;
+  retl->command = elem->command;
+  retl->status = elem->status;
+  retl-> pid  = elem->pid;
+  assert(retl);
+  return retl;
 }
 
 // This is the destructor function for string element.
 // Use this as destructor callback in vector.
-void string_destructor(void *elem) { free(elem); }
+void process_destructor(process *elem) { 
+	free(elem->command);
+	free(elem->status);
+	free(elem);
+ }
 
-void *string_default_constructor(void) {
+process *string_default_constructor(void) {
   // A single null byte
-  return calloc(1, sizeof(char));
+  return calloc(1, sizeof(process));
 }
 
 int shell(int argc, char *argv[]) {
@@ -36,11 +43,9 @@ int shell(int argc, char *argv[]) {
 
 	//create a status tracker
 	
-	vector *com = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *proc = vector_create(process_copy_constructor, process_destructor, process_default_constructor);
 	
-	vector *stat = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 
-	vector *p = vector_create(int_copy_constructor, int_destructor, int_default_constructor);
 	
 
 	int exit_ = 0;
@@ -61,12 +66,12 @@ int shell(int argc, char *argv[]) {
 		//stock process
 			process *a;
 			a->command = argv[0];
-			vector_push_back(com, a->command);
+			
 			a->pid = (int)main_pro;
-			vector_push_back(p, (int)a->pid);
+			
 			//稍后需要判断
 			a->status = STATUS_RUNNING;
-			vector_push_back(stat, a->status);
+			vector_push_back(proc, a);
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
