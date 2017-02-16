@@ -6,7 +6,7 @@
 #include "shell.h"
 #include "vector.h"
 #include <unistd.h>
-
+# include <string.h>
 typedef struct process {
   char *command;
   char *status;
