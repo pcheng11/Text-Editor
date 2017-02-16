@@ -19,7 +19,7 @@ int shell(int argc, char *argv[]) {
 	int exit_ = 0;
 	while(exit_ == 0)
   {
-	if(getopt(argc, argv, "f") == -1)
+	if(getopt(argc, argv, "f") != -1)
 	{
 
 	}
