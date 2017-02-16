@@ -40,7 +40,7 @@ int shell(int argc, char *argv[]) {
 	
 	vector *stat = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 
-	vector *p = vector_create(int_copy_constructor, int_destructor, int_destructor);
+	vector *p = vector_create(int_copy_constructor, int_destructor, int_default_constructor);
 	
 
 	int exit_ = 0;
@@ -62,7 +62,7 @@ int shell(int argc, char *argv[]) {
 			process *a;
 			a->command = argv[0];
 			vector_push_back(com, a->command);
-			a.pid = (int)main_pro;
+			a->pid = (int)main_pro;
 			vector_push_back(p, &(int)a->pid);
 			//稍后需要判断
 			a->status = STATUS_RUNNING;
