@@ -14,5 +14,17 @@ typedef struct process {
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
+	//input is not a file;
+	if(getopt(argc, argv, "f") == -1)
+	{
+
+	}
+	else
+	{
+		pid_t main_pro = getpid();
+		char *directory = getcwd(NULL, 0);
+		print_prompt(directory, main_pro);
+		free(directory);
+	}
   return 0;
 }
