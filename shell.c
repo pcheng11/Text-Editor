@@ -48,14 +48,15 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		//stock process
-			process *a = NULL;
+			/*process *a = NULL;
 			a->command = argv[0];
 			
 			a->pid = (int)main_pro;
 			
 			//稍后需要判断
 			a->status = STATUS_RUNNING;
-			vector_push_back(proc, a);
+			//vector_push_back(proc, a);
+			*/
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
