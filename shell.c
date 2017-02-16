@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
+#include <assert.h>
 typedef struct process {
   char *command;
   char *status;
@@ -64,7 +65,7 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		//stock process
-			process *a;
+			process *a = NULL;
 			a->command = argv[0];
 			
 			a->pid = (int)main_pro;
