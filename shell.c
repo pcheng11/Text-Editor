@@ -43,7 +43,7 @@ int shell(int argc, char *argv[]) {
 
 	//create a status tracker
 	
-	vector *proc = vector_create((void*)process_copy_constructor, process_destructor,(void*) process_default_constructor);
+	vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 	
 
 	
@@ -84,7 +84,7 @@ int shell(int argc, char *argv[]) {
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
-			 print_process_info( (vector_get(proc, 0)->status, vector_get(proc,0)->pid, vector_front(proc,0)->command));
+			// print_process_info( (vector_get(proc, 0)->status, vector_get(proc,0)->pid, vector_front(proc,0)->command));
 
 		}
 		else
