@@ -44,7 +44,8 @@ int shell(int argc, char *argv[]) {
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
-			printf("%s", temp_dir);
+			//printf("%s", temp_dir);
+			// dir does not exist
 			if(opendir(temp_dir)== NULL)
 			{
 				print_no_directory(temp_dir);
