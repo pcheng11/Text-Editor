@@ -16,27 +16,7 @@ typedef struct process {
   pid_t pid;
 } process;
 
-process *process_copy_constructor(process *elem) {
-  process* retl = NULL;
-  retl->command = elem->command;
-  retl->status = elem->status;
-  retl-> pid  = elem->pid;
-  assert(retl);
-  return retl;
-}
 
-// This is the destructor function for string element.
-// Use this as destructor callback in vector.
-void process_destructor(process *elem) { 
-	free(elem->command);
-	free(elem->status);
-	free(elem);
- }
-
-process *process_default_constructor(void) {
-  // A single null byte
-  return calloc(1, sizeof(process));
-}
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
@@ -46,7 +26,6 @@ int shell(int argc, char *argv[]) {
 	
 	
 	
-
 	
 
 	int exit_ = 0;
@@ -54,15 +33,17 @@ int shell(int argc, char *argv[]) {
 	while(exit_ == 0)
   {
 
-  	//stdin input
+  	//stdin input main process: no need to create another process
   	if(argc == 1)
 	{
 
-		vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
+		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
+
 		int temp = 0;
 		while(!temp)
 	  {
 		pid_t main_pro = getpid();
+		//get current directory
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
 		free(directory);
