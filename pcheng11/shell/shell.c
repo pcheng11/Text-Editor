@@ -16,7 +16,7 @@ typedef struct process {
 } process;
 
 process *process_copy_constructor(process *elem) {
-  process * retl;
+  process * retl = NULL;
   retl->command = elem->command;
   retl->status = elem->status;
   retl-> pid  = elem->pid;
@@ -84,7 +84,7 @@ int shell(int argc, char *argv[]) {
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
-			void print_process_info( &vector_front(stat), vector_font(p), &vector_front(com));
+			 print_process_info( vector_front(proc)->status, vector_font(proc)->pid, vector_front(proc)->command);
 
 		}
 		else
