@@ -32,7 +32,7 @@ int shell(int argc, char *argv[]) {
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
-		getline(&buffer, &size, 1);
+		getline(&buffer, &size, stdin);
 		
 	}
   }
