@@ -65,8 +65,6 @@ int shell(int argc, char *argv[]) {
 		if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 
-			
-
 		if(strcmp(buffer, "ps\n") == 0)
 		{
 			// print_process_info( (vector_get(proc, 0)->status, vector_get(proc,0)->pid, vector_front(proc,0)->command));
@@ -92,6 +90,8 @@ int shell(int argc, char *argv[]) {
 	 }
 		
 	}
+
+	
 	//file input
 	if(getopt(argc, argv, "f") != -1)
 	{
