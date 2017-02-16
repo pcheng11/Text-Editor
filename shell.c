@@ -44,7 +44,7 @@ int shell(int argc, char *argv[]) {
 
 	//create a status tracker
 	
-	vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
+	
 	
 
 	
@@ -57,6 +57,8 @@ int shell(int argc, char *argv[]) {
   	//stdin input
   	if(argc == 1)
 	{
+
+		vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 		int temp = 0;
 		while(!temp)
 	  {
