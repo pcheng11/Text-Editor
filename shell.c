@@ -238,6 +238,7 @@ int shell(int argc, char *argv[]) {
   			if(file == NULL)
   			{ // can not open
       			fclose(file);
+      			puts("L");
       			print_script_file_error();
       		
   			}
