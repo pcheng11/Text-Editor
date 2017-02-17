@@ -252,8 +252,8 @@ int shell(int argc, char *argv[]) {
     			size_t length = 0;
     			
     		
-    			while (getline(&buffer, &length, file) != -1) 
-    			{
+    	while (getline(&buffer, &length, file) != -1) 
+    	{
 
 		pid_t main_pro = getpid();
 		//get current directory
@@ -412,7 +412,8 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
-  				}
+  	}
+  		temp = 1;
   				free(buffer);
    				fclose(file);
 			}
