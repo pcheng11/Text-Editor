@@ -250,95 +250,85 @@ int shell(int argc, char *argv[]) {
   			{
    		  		char *buffer = NULL;
     			size_t length = 0;
-    			ssize_t read;
+    			
     		
-    			while ((read = getline(&buffer, &length, file)) != -1) 
+    			while (getline(&buffer, &length, file) != -1) 
     			{
-
-    					int len = strlen(buffer);
-    					buffer[len] = '\0';
-    					pid_t main_pro = getpid();
-						//get current directory
-						char *directory = getcwd(NULL, 0);
-						print_prompt(directory, main_pro);
-						free(directory);
-						print_command(buffer);
+    				
+		pid_t main_pro = getpid();
+		//get current directory
+		char *directory = getcwd(NULL, 0);
+		print_prompt(directory, main_pro);
+		free(directory);
 		//stock process
-						process a;
-						a.command = argv[0];
-						int *temp_1 = malloc(sizeof(a.pid));
-						*temp_1 = (int)main_pro;
+			process a;
+			a.command = argv[0];
+			int *temp_1 = malloc(sizeof(a.pid));
+			*temp_1 = (int)main_pro;
 
 			
-			
-						a.status = STATUS_RUNNING;
-						vector_push_back(pid_info, temp_1);
-						vector_push_back(status_info, a.status);
-						vector_push_back(command_info, a.command);
+			//稍后需要判断
+			a.status = STATUS_RUNNING;
+			vector_push_back(pid_info, temp_1);
+			vector_push_back(status_info, a.status);
+			vector_push_back(command_info, a.command);
 		
 		//get stdin
-						char* tell = strtok(buffer, " ");
+		char *buffer = NULL;
+		size_t size = 0;
+		getline(&buffer, &size, stdin);
+		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
-					if(strcmp(buffer, "ps") == 0)
-					{
-					print_command(buffer);
-		 			print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
+		if(strcmp(buffer, "ps\n") == 0)
+		{
+		 print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
 
-					}
+		}
 		
 		
 		//kill
-				else if(strcmp(buffer, "kill") == 0)
-				{
-					
-					
-					print_invalid_command(buffer);
-				}
-
-				else if(strcmp(tell, "kill") == 0)
-				{
-					//buffer[len] = '\0';
-					
-
-					char* a = strdup(tell + 5);
-					int exist = 0;
-					int i = atoi(a);
+		else if(strcmp(buffer, "kill\n") == 0)
+		{
+			buffer[4] = '\0';
+			print_invalid_command(buffer);
+		}
+		else if(strcmp(tell, "kill") == 0)
+		{
+			char* a = strdup(tell + 5);
+			int exist = 0;
+			int i = atoi(a);
 		//	printf("%d", i);
-					int remember;
-					for(size_t j = 0; j < vector_size(pid_info); j++)
-					{
-						if(*(int*)vector_get(pid_info,j) == i)
-						{
-							exist = 1;
-							remember = j;
-							break;
-						}
-
-					}
-					if(exist == 0)
-					{
-					print_no_process_found(i);
-					}
-					else
-					{
-						kill(i, SIGTERM);
-						print_killed_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
-					}
+			int remember;
+			for(size_t j = 0; j < vector_size(pid_info); j++)
+			{
+				if(*(int*)vector_get(pid_info,j) == i)
+				{
+					exist = 1;
+					remember = j;
+					break;
 				}
+
+			}
+			if(exist == 0)
+			{
+				print_no_process_found(i);
+			}
+			else
+			{
+				kill(i, SIGTERM);
+				print_killed_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
+			}
+		}
 
 		//stop
-			else if(strcmp(buffer, "stop") == 0)
-			{
-
-				//buffer[len] = '\0';
-				
-				print_invalid_command(buffer);
-			}
+		else if(strcmp(buffer, "stop\n") == 0)
+		{
+			buffer[4] = '\0';
+			print_invalid_command(buffer);
+		}
 		else if(strcmp(tell, "stop") == 0)
 		{
-			
-
 			char* a = strdup(tell + 5);
 			int exist = 0;
 			int i = atoi(a);
@@ -366,16 +356,13 @@ int shell(int argc, char *argv[]) {
 			}
 		}
 		//cont
-		else if(strcmp(buffer, "cont") == 0)
+		else if(strcmp(buffer, "cont\n") == 0)
 		{
-			
-					
-
+			buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "cont") == 0)
 		{
-		
 			char* a = strdup(tell + 5);
 			int exist = 0;
 			int i = atoi(a);
@@ -404,15 +391,11 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//cd
-		else if(strcmp(buffer, "cd") == 0)
-		{
-		
+		else if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
-		}
 		
 		else if(strcmp(tell, "cd") == 0)
 		{
-		
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
@@ -428,8 +411,6 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
-      			
-    
   				}
   				free(buffer);
    				fclose(file);
