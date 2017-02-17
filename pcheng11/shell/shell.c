@@ -261,8 +261,10 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		int len = strlen(buffer);
-		buffer[len] = '\0';
-		print_command(buffer);
+		char *r_temp = strdup(buffer);
+		r_temp[len] = '\0';
+		print_command(r_temp);
+		free(r_temp);
 		//stock process
 			process a;
 			a.command = argv[0];
