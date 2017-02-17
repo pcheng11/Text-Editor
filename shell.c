@@ -92,8 +92,14 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 		
+		else if(strcmp(buffer, "kill\n") == 0)
+		{
+			print_invlaid_command(buffer);
+		}
 		else if(strcmp(tell, "kill"))
-			puts("L");
+		{
+
+		}
 
 		
 		else
