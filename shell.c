@@ -262,7 +262,7 @@ int shell(int argc, char *argv[]) {
 		free(directory);
 		int len = strlen(buffer);
 		char *r_temp = strdup(buffer);
-		r_temp[len] = '\0';
+		r_temp[len-1] = '\0';
 		print_command(r_temp);
 		free(r_temp);
 		//stock process
