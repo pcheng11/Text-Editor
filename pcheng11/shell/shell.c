@@ -93,8 +93,7 @@ int shell(int argc, char *argv[]) {
 		 print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
 
 		}
-		else if(strcmp(buffer, "cd\n") == 0)
-			print_no_directory("");
+		
 		
 		else if(strcmp(buffer, "kill\n") == 0)
 		{
@@ -118,7 +117,8 @@ int shell(int argc, char *argv[]) {
 				print_no_process_found(i);
 			}
 		}
-
+		else if(strcmp(buffer, "cd\n") == 0)
+			print_no_directory("");
 		
 		else
 		{
