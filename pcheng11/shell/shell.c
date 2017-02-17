@@ -247,7 +247,7 @@ int shell(int argc, char *argv[]) {
   			}
 //count line numbers
 			else
-  			{
+  	{
    		  		char *buffer = NULL;
     			size_t length = 0;
     			
@@ -261,7 +261,7 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		int len = strlen(buffer);
-		buffer[len-1] = '\0';
+		buffer[len] = '\0';
 		print_command(buffer);
 		//stock process
 			process a;
@@ -416,7 +416,7 @@ int shell(int argc, char *argv[]) {
   		
   				free(buffer);
    				fclose(file);
-			}
+	}
 			temp = 1;
 		}
 	}
