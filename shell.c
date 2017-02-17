@@ -254,7 +254,7 @@ int shell(int argc, char *argv[]) {
     		
     			while (getline(&buffer, &length, file) != -1) 
     			{
-    				
+
 		pid_t main_pro = getpid();
 		//get current directory
 		char *directory = getcwd(NULL, 0);
@@ -274,9 +274,7 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(command_info, a.command);
 		
 		//get stdin
-		char *buffer = NULL;
-		size_t size = 0;
-		getline(&buffer, &size, stdin);
+	
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
