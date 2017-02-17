@@ -289,7 +289,7 @@ int shell(int argc, char *argv[]) {
 		//kill
 				else if(strcmp(buffer, "kill\n") == 0)
 				{
-					buffer[len] = '\0';
+					//buffer[len] = '\0';
 					print_command(buffer);
 					
 					print_invalid_command(buffer);
@@ -297,7 +297,7 @@ int shell(int argc, char *argv[]) {
 
 				else if(strcmp(tell, "kill") == 0)
 				{
-					buffer[len] = '\0';
+					//buffer[len] = '\0';
 					print_command(buffer);
 
 					char* a = strdup(tell + 5);
@@ -330,13 +330,13 @@ int shell(int argc, char *argv[]) {
 				else if(strcmp(buffer, "stop\n") == 0)
 			{
 
-				buffer[len] = '\0';
+				//buffer[len] = '\0';
 					print_command(buffer);
 				print_invalid_command(buffer);
 			}
 		else if(strcmp(tell, "stop") == 0)
 		{
-			buffer[len] = '\0';
+			//buffer[len] = '\0';
 					print_command(buffer);
 
 			char* a = strdup(tell + 5);
@@ -368,7 +368,7 @@ int shell(int argc, char *argv[]) {
 		//cont
 		else if(strcmp(buffer, "cont\n") == 0)
 		{
-			buffer[len] = '\0';
+			//buffer[len] = '\0';
 					print_command(buffer);
 
 			print_invalid_command(buffer);
@@ -408,14 +408,14 @@ int shell(int argc, char *argv[]) {
 		//cd
 		else if(strcmp(buffer, "cd\n") == 0)
 		{
-			buffer[len] = '\0';
-			printf("%s", buffer);
+			//buffer[len] = '\0';
+			printf("%s\n", buffer);
 			print_no_directory("");
 		}
 		
 		else if(strcmp(tell, "cd") == 0)
 		{
-			buffer[len] = '\0';
+			//buffer[len] = '\0';
 		   printf("%s", buffer);
 
 			char *temp_dir = strdup(buffer + 3);
