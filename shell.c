@@ -280,12 +280,12 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(command_info, a.command);
 		
 		//get stdin
-		//if(buffer[len-1] == '\n')
-		//buffer[len-1] = '\0';
+		if(buffer[len-1] == '\n')
+		buffer[len-1] = '\0';
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
-		if(strcmp(buffer, "ps\n") == 0)
+		if(strcmp(buffer, "ps") == 0)
 		{
 		 print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
 
@@ -293,7 +293,7 @@ int shell(int argc, char *argv[]) {
 		
 		
 		//kill
-		else if(strcmp(buffer, "kill\n") == 0)
+		else if(strcmp(buffer, "kill") == 0)
 		{
 			
 			print_invalid_command(buffer);
@@ -331,7 +331,7 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//stop
-		else if(strcmp(buffer, "stop\n") == 0)
+		else if(strcmp(buffer, "stop") == 0)
 		{
 			//buffer[4] = '\0';
 			print_invalid_command(buffer);
