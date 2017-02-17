@@ -229,13 +229,14 @@ int shell(int argc, char *argv[]) {
 
 	//file input
 	else
-	{puts("L");
+	{
 
 		int temp = 0;
 		while(!temp)
-		{puts("L");
+		{	
+			char* filename = strdup(argv[2]);
 		
-			FILE *file = fopen(argv[2], "r");
+			FILE *file = fopen(filename, "r");
   			if(file == NULL)
   			{ // can not open
       			fclose(file);
