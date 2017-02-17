@@ -256,6 +256,7 @@ int shell(int argc, char *argv[]) {
     			{
 
     					int len = strlen(buffer);
+    					buffer[len] = '\0';
     					pid_t main_pro = getpid();
 						//get current directory
 						char *directory = getcwd(NULL, 0);
@@ -278,7 +279,7 @@ int shell(int argc, char *argv[]) {
 						char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
-					if(strcmp(buffer, "ps\n") == 0)
+					if(strcmp(buffer, "ps") == 0)
 					{
 					print_command(buffer);
 		 			print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
@@ -287,7 +288,7 @@ int shell(int argc, char *argv[]) {
 		
 		
 		//kill
-				else if(strcmp(buffer, "kill\n") == 0)
+				else if(strcmp(buffer, "kill") == 0)
 				{
 					//buffer[len] = '\0';
 					print_command(buffer);
@@ -327,7 +328,7 @@ int shell(int argc, char *argv[]) {
 				}
 
 		//stop
-				else if(strcmp(buffer, "stop\n") == 0)
+				else if(strcmp(buffer, "stop") == 0)
 			{
 
 				//buffer[len] = '\0';
@@ -366,16 +367,16 @@ int shell(int argc, char *argv[]) {
 			}
 		}
 		//cont
-		else if(strcmp(buffer, "cont\n") == 0)
+		else if(strcmp(buffer, "cont") == 0)
 		{
-			//buffer[len] = '\0';
+			
 					print_command(buffer);
 
 			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "cont") == 0)
 		{
-			buffer[len] = '\0';
+		
 					print_command(buffer);
 
 			char* a = strdup(tell + 5);
@@ -406,18 +407,16 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//cd
-		else if(strcmp(buffer, "cd\n") == 0)
+		else if(strcmp(buffer, "cd") == 0)
 		{
-			//buffer[len] = '\0';
-			printf("%s\n", buffer);
+			print_command(buffer);
 			print_no_directory("");
 		}
 		
 		else if(strcmp(tell, "cd") == 0)
 		{
-			//buffer[len] = '\0';
-		   printf("%s", buffer);
-
+			
+			print_command(buffer);
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
