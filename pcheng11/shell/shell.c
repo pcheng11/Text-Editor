@@ -82,14 +82,18 @@ int shell(int argc, char *argv[]) {
 		char *buffer = NULL;
 		size_t size = 0;
 		getline(&buffer, &size, stdin);
+		char* tell = strtok(buffer, " ");
 		//see what is the command
 		if(strcmp(buffer, "ps\n") == 0)
 		{
 		 print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
 
 		}
-		if(strcmp(buffer, "cd\n") == 0)
+		else if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
+		
+		else if(strcmp(tell, "kill"))
+			puts("L");
 
 		
 		else
