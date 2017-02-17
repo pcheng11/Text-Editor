@@ -39,7 +39,10 @@ int shell(int argc, char *argv[]) {
 	//input is not a file;
 
 	if(argc > 3 || argc == 2 || (argc == 3 && getopt(argc, argv, "f") != -1))
+	{
 		print_usage();
+		return 0;
+	}
 	
 // create 3 vectors to keep track of process info
 	vector *pid_info = int_vector_create();
