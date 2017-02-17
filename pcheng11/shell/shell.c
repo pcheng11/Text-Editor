@@ -232,7 +232,7 @@ int shell(int argc, char *argv[]) {
 	{
 
 		int temp = 0;
-		while(!temp)
+		while(temp!=1)
 		{	
 		
 			FILE *file = fopen(argv[2], "r");
