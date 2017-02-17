@@ -166,6 +166,40 @@ int shell(int argc, char *argv[]) {
 				print_stopped_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
 			}
 		}
+		//cont
+		else if(strcmp(buffer, "cont\n") == 0)
+		{
+			buffer[4] = '\0';
+			print_invalid_command(buffer);
+		}
+		else if(strcmp(tell, "cont") == 0)
+		{
+			char* a = strdup(tell + 5);
+			int exist = 0;
+			int i = atoi(a);
+			//printf("%d", i);
+			int remember;
+			for(size_t j = 0; j < vector_size(pid_info); j++)
+			{
+				if(*(int*)vector_get(pid_info,j) == i)
+				{
+					exist = 1;
+					remember = j;
+					break;
+				}
+
+			}
+			if(exist == 0)
+			{
+				print_no_process_found(i);
+			}
+			else
+			{
+				kill(i, SIGCONT);
+				vector_set(status_info, remember, STATUS_RUNNING);
+				
+			}
+		}
 
 		//cd
 		else if(strcmp(buffer, "cd\n") == 0)
