@@ -100,7 +100,7 @@ int shell(int argc, char *argv[]) {
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "kill"))
+		else if(strcmp(tell, "kill") == 0)
 		{
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -121,7 +121,7 @@ int shell(int argc, char *argv[]) {
 			print_no_directory("");
 		
 
-		else if(strcmp(tell, "cd"))
+		else if(strcmp(tell, "cd") == 0)
 		{
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
