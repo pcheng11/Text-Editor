@@ -262,6 +262,7 @@ int shell(int argc, char *argv[]) {
 						char *directory = getcwd(NULL, 0);
 						print_prompt(directory, main_pro);
 						free(directory);
+						print_command(buffer);
 		//stock process
 						process a;
 						a.command = argv[0];
@@ -290,8 +291,7 @@ int shell(int argc, char *argv[]) {
 		//kill
 				else if(strcmp(buffer, "kill") == 0)
 				{
-					//buffer[len] = '\0';
-					print_command(buffer);
+					
 					
 					print_invalid_command(buffer);
 				}
@@ -299,7 +299,7 @@ int shell(int argc, char *argv[]) {
 				else if(strcmp(tell, "kill") == 0)
 				{
 					//buffer[len] = '\0';
-					print_command(buffer);
+					
 
 					char* a = strdup(tell + 5);
 					int exist = 0;
@@ -328,17 +328,16 @@ int shell(int argc, char *argv[]) {
 				}
 
 		//stop
-				else if(strcmp(buffer, "stop") == 0)
+			else if(strcmp(buffer, "stop") == 0)
 			{
 
 				//buffer[len] = '\0';
-					print_command(buffer);
+				
 				print_invalid_command(buffer);
 			}
 		else if(strcmp(tell, "stop") == 0)
 		{
-			//buffer[len] = '\0';
-					print_command(buffer);
+			
 
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -370,15 +369,13 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cont") == 0)
 		{
 			
-					print_command(buffer);
+					
 
 			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "cont") == 0)
 		{
 		
-					print_command(buffer);
-
 			char* a = strdup(tell + 5);
 			int exist = 0;
 			int i = atoi(a);
@@ -409,14 +406,13 @@ int shell(int argc, char *argv[]) {
 		//cd
 		else if(strcmp(buffer, "cd") == 0)
 		{
-			print_command(buffer);
+		
 			print_no_directory("");
 		}
 		
 		else if(strcmp(tell, "cd") == 0)
 		{
-			
-			print_command(buffer);
+		
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
