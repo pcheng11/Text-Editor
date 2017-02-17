@@ -103,7 +103,18 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(tell, "kill"))
 		{
-
+			char* a = strdup(tell + 5);
+			int exist = 0;
+			int i = atoi(a);
+			for(int j = 0; j < vector_size(pid_info); j++)
+			{
+				if(*(int*)vector_get(pid_info,j) == i)
+					exist = 1;
+			}
+			if(exist == 0)
+			{
+				print_on_process_found(i);
+			}
 		}
 
 		
