@@ -419,7 +419,7 @@ int shell(int argc, char *argv[]) {
   				free(buffer);
    				fclose(file);
 	}
-			temp = 1;
+			exit(1);
 		}
 	}
 
