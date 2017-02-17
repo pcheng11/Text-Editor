@@ -234,6 +234,7 @@ int shell(int argc, char *argv[]) {
 		int temp = 0;
 		while(!temp)
 		{	
+			printf("%s", argv[2]);
 			char* filename = strdup(argv[2]);
 		
 			FILE *file = fopen(filename, "r");
