@@ -120,7 +120,8 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 		
-		else
+
+		else if(strcmp(tell, "cd"))
 		{
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
