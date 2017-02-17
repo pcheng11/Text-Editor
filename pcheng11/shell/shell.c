@@ -234,16 +234,12 @@ int shell(int argc, char *argv[]) {
 		int temp = 0;
 		while(!temp)
 		{	
-			printf("%s\n", argv[2]);
-			//char* filename = strdup(argv[2]);
 		
 			FILE *file = fopen(argv[2], "r");
-				puts("L");
+			
   			if(file == NULL)
   			{ // can not open
-  				puts("L");
-      			//fclose(file);
-      			puts("L");
+  				
       			print_script_file_error();
       			free(file);
       			return 0;
@@ -251,8 +247,7 @@ int shell(int argc, char *argv[]) {
   			}
 //count line numbers
 			else
-  			{  
-  				puts("L");
+  			{
    		  		char *line = NULL;
     			size_t length = 0;
     			ssize_t read;
