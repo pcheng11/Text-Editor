@@ -222,7 +222,7 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
-	 
+	 }
 		
 	}
 
@@ -230,35 +230,36 @@ int shell(int argc, char *argv[]) {
 	//file input
 	if(getopt(argc, argv, "f") != -1)
 	{
+		temp = 0;
+		while(!temp)
+		{
 		
-		FILE *file = fopen(argv[2], "r");
-  		if(file == NULL)
-  		{ // can not open
-      		fclose(file);
-      		print_script_file_error();
+			FILE *file = fopen(argv[2], "r");
+  			if(file == NULL)
+  			{ // can not open
+      			fclose(file);
+      			print_script_file_error();
       		
-  		}
-//count line numbers
-		else
-  		{  
-   		  char *line = NULL;
-    		size_t length = 0;
-    		ssize_t read;
-    		size_t line_num = 0;
-    		while ((read = getline(&line, &length, file)) != -1) 
-    		{
-
-      			line_num ++;
-     
-     
-    
   			}
-  				 free(line);
-   			 fclose(file);
+//count line numbers
+			else
+  			{  
+   		  		char *line = NULL;
+    			size_t length = 0;
+    			ssize_t read;
+    			size_t line_num = 0;
+    			while ((read = getline(&line, &length, file)) != -1) 
+    			{
 
+      				line_num ++;
+    
+  				}
+  				free(line);
+   				fclose(file);
+			}
 		}
 	}
-}
+
 }
 return 0;
  
