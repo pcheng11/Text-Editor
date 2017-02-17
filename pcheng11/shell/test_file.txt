@@ -4,4 +4,3 @@ cd home
 kill
 cont
 kill 1980
-
