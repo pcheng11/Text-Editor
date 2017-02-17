@@ -1,100 +1,198 @@
 [
   {
-    "timestamp": "2017-02-15 22:00:00.730981",
     "revision": "25831",
+    "checksum": "1b6dab673138c6da37032335193d6f07cb959e8e  shell.c\n",
     "testcases": [
       {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "description": "Attempt to cd to a directory",
-        "ptsPossible": 1.0,
         "name": "cd_test",
-        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
-        "ptsEarned": 0.0
+        "ptsPossible": 1.0
       },
       {
-        "description": "Checking if we can run a process in the background (this test will not pass if you do not have the basic non-built in command features implemented)",
-        "ptsPossible": 1.0,
-        "name": "check_background_process",
+        "ptsEarned": 0.0,
         "log": "Error: Command did not run immediately after we backgrounded a process",
-        "ptsEarned": 0.0
+        "description": "Checking if we can run a process in the background (this test will not pass if you do not have the basic non-built in command features implemented)",
+        "name": "check_background_process",
+        "ptsPossible": 1.0
       },
       {
-        "description": "Checking if zombie processes are cleaned up",
-        "ptsPossible": 1.0,
-        "name": "cleanup_zombie",
+        "ptsEarned": 0.0,
         "log": "Error: Process failed to run in background",
-        "ptsEarned": 0.0
+        "description": "Checking if zombie processes are cleaned up",
+        "name": "cleanup_zombie",
+        "ptsPossible": 1.0
       },
       {
-        "description": "Checking if SIGINT is blocked",
-        "ptsPossible": 1.0,
-        "name": "control_c_test",
+        "ptsEarned": 0.0,
         "log": "Shell quit with sigint",
-        "ptsEarned": 0.0
+        "description": "Checking if SIGINT is blocked",
+        "name": "control_c_test",
+        "ptsPossible": 1.0
       },
       {
+        "ptsEarned": 1.0,
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "description": "Checking if shell exits correctly",
-        "ptsPossible": 1.0,
         "name": "eof_test",
-        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
-        "ptsEarned": 1.0
+        "ptsPossible": 1.0
       },
       {
+        "ptsEarned": 1.0,
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "description": "Checking if shell exits correctly",
-        "ptsPossible": 1.0,
         "name": "exit_test",
-        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
-        "ptsEarned": 1.0
+        "ptsPossible": 1.0
       },
       {
-        "description": "Run 1 command with -f (you should have commands working already).",
-        "ptsPossible": 1.0,
-        "name": "file_test",
+        "ptsEarned": 0.0,
         "log": "Program failed to print out commands read from file",
-        "ptsEarned": 0.0
+        "description": "Run 1 command with -f (you should have commands working already).",
+        "name": "file_test",
+        "ptsPossible": 1.0
       },
       {
-        "description": "Runs more commands with -f (you should have commands working already).",
-        "ptsPossible": 1.0,
-        "name": "file_test_hard",
+        "ptsEarned": 0.0,
         "log": "Program failed to print out commands read from file or read all commands from file",
-        "ptsEarned": 0.0
+        "description": "Runs more commands with -f (you should have commands working already).",
+        "name": "file_test_hard",
+        "ptsPossible": 1.0
       },
       {
-        "description": "Runs hard commands with -f (you should have commands working already) and checks if it exits at EOF.",
-        "ptsPossible": 1.0,
-        "name": "file_test_hard2",
+        "ptsEarned": 0.0,
         "log": "Error: Your program didn't run the given commands from a file.",
-        "ptsEarned": 0.0
+        "description": "Runs hard commands with -f (you should have commands working already) and checks if it exits at EOF.",
+        "name": "file_test_hard2",
+        "ptsPossible": 1.0
       },
       {
-        "description": "Checking that invalid commands are invalidated (you should have commands working already).",
-        "ptsPossible": 1.0,
-        "name": "invalid_command",
+        "ptsEarned": 0.0,
         "log": "Error: couldn't find error message for running invalid command",
-        "ptsEarned": 0.0
+        "description": "Checking that invalid commands are invalidated (you should have commands working already).",
+        "name": "invalid_command",
+        "ptsPossible": 1.0
       },
       {
+        "ptsEarned": 1.0,
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "description": "Memory test - does not depend on shell functionality.",
-        "ptsPossible": 1.0,
         "name": "memory_check",
-        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
-        "ptsEarned": 1.0
+        "ptsPossible": 1.0
       },
       {
+        "ptsEarned": 5.0,
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "description": "Memory check hard (all features need to work for this).",
-        "ptsPossible": 5.0,
         "name": "memory_check_hard",
-        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
-        "ptsEarned": 5.0
+        "ptsPossible": 5.0
       },
       {
-        "description": "Testing echo and printing.",
-        "ptsPossible": 1.0,
-        "name": "print_test",
+        "ptsEarned": 0.0,
         "log": "Error: command did not run",
-        "ptsEarned": 0.0
+        "description": "Testing echo and printing.",
+        "name": "print_test",
+        "ptsPossible": 1.0
       }
     ],
-    "checksum": "1b6dab673138c6da37032335193d6f07cb959e8e  shell.c\n"
+    "timestamp": "2017-02-15 22:00:00.730981"
+  },
+  {
+    "revision": "26795",
+    "checksum": "581315f19e9078dc5914a56b316de3573f621e4a  shell.c\n",
+    "testcases": [
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Attempt to cd to a directory",
+        "name": "cd_test",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking if we can run a process in the background (this test will not pass if you do not have the basic non-built in command features implemented)",
+        "name": "check_background_process",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking if zombie processes are cleaned up",
+        "name": "cleanup_zombie",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking if SIGINT is blocked",
+        "name": "control_c_test",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking if shell exits correctly",
+        "name": "eof_test",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking if shell exits correctly",
+        "name": "exit_test",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Run 1 command with -f (you should have commands working already).",
+        "name": "file_test",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Runs more commands with -f (you should have commands working already).",
+        "name": "file_test_hard",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Runs hard commands with -f (you should have commands working already) and checks if it exits at EOF.",
+        "name": "file_test_hard2",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Checking that invalid commands are invalidated (you should have commands working already).",
+        "name": "invalid_command",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Memory test - does not depend on shell functionality.",
+        "name": "memory_check",
+        "ptsPossible": 1.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Memory check hard (all features need to work for this).",
+        "name": "memory_check_hard",
+        "ptsPossible": 5.0
+      },
+      {
+        "ptsEarned": 0.0,
+        "log": "Trying to compile your code...\nFAILED TO COMPILE!\n/usr/bin/ld: cannot find -lprovided\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [shell] Error 1\n",
+        "description": "Testing echo and printing.",
+        "name": "print_test",
+        "ptsPossible": 1.0
+      }
+    ],
+    "timestamp": "2017-02-16 22:27:29.731675"
   }
 ]
