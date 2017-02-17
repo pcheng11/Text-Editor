@@ -113,7 +113,7 @@ int shell(int argc, char *argv[]) {
 			}
 			if(exist == 0)
 			{
-				print_on_process_found(i);
+				print_no_process_found(i);
 			}
 		}
 
