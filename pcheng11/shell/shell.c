@@ -230,8 +230,34 @@ int shell(int argc, char *argv[]) {
 	//file input
 	if(getopt(argc, argv, "f") != -1)
 	{
+		while()
+		FILE *file = fopen(path_to_file, "r");
+  		if(file == NULL)
+  		{ // can not open
+      		fclose(file);
+      		print_script_file_error();
+      		
+  		}
+//count line numbers
+		else
+  		{  
+   		  char *line = NULL;
+    		size_t length = 0;
+    		ssize_t read;
+    		size_t line_num = 0;
+    		while ((read = getline(&line, &length, file)) != -1) 
+    		{
 
+      			line_num ++;
+     
+     
+    
+  			}
+  				 free(line);
+   			 fclose(file);
+
+		}
 	}
-	  }
-  return 0;
+	  
+ }
 }
