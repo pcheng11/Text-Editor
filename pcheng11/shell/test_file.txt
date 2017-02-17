@@ -4,4 +4,4 @@ cd home
 kill
 cont
 kill 1980
-cd mini_valgrind
+
