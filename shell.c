@@ -409,15 +409,15 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cd\n") == 0)
 		{
 			buffer[len] = '\0';
-					print_command(buffer);
+			printf("%s", buffer);
 			print_no_directory("");
 		}
 		
 		else if(strcmp(tell, "cd") == 0)
 		{
 			buffer[len] = '\0';
-					print_command(buffer);
-					
+		   printf("%s", buffer);
+
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
