@@ -245,6 +245,7 @@ int shell(int argc, char *argv[]) {
 //count line numbers
 			else
   			{  
+  				puts("L");
    		  		char *line = NULL;
     			size_t length = 0;
     			ssize_t read;
