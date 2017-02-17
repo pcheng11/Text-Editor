@@ -208,7 +208,8 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(tell, "cd") == 0)
 		{
 			char *temp_dir = strdup(buffer + 3);
-			
+				size_t a = strlen(temp_dir);
+			temp_dir[a-1] = '\0';
 			//printf("%s", temp_dir);
 
 			// dir does not exist
@@ -405,8 +406,7 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(tell, "cd") == 0)
 		{
 			char *temp_dir = strdup(buffer + 3);
-			size_t a = strlen(temp_dir);
-		//	temp_dir[a-1] = '\0';
+		
 			//printf("%s", temp_dir);
 
 			// dir does not exist
