@@ -279,7 +279,7 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(command_info, a.command);
 		
 		//get stdin
-		buffer[len] = '\0';
+		buffer[len-1] = '\0';
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
