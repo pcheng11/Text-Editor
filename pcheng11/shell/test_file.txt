@@ -1,3 +1,4 @@
+cd mini_valgrind
 cd ..
 cd home
 kill
