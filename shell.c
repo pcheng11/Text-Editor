@@ -260,7 +260,7 @@ int shell(int argc, char *argv[]) {
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
 		free(directory);
-		ptint_command(buffer);
+		print_command(buffer);
 		//stock process
 			process a;
 			a.command = argv[0];
