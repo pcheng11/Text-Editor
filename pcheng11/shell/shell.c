@@ -229,10 +229,11 @@ int shell(int argc, char *argv[]) {
 
 	//file input
 	if(getopt(argc, argv, "f") != -1)
-	{
+	{puts("L");
+		
 		int temp = 0;
 		while(!temp)
-		{
+		{puts("L");
 		
 			FILE *file = fopen(argv[2], "r");
   			if(file == NULL)
