@@ -230,7 +230,7 @@ int shell(int argc, char *argv[]) {
 	//file input
 	if(getopt(argc, argv, "f") != -1)
 	{
-		while()
+		
 		FILE *file = fopen(path_to_file, "r");
   		if(file == NULL)
   		{ // can not open
