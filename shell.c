@@ -233,7 +233,7 @@ int shell(int argc, char *argv[]) {
 
 		int temp = 0;
 		while(temp!=1)
-		{	
+	{	
 		
 			FILE *file = fopen(argv[2], "r");
 			
@@ -253,7 +253,7 @@ int shell(int argc, char *argv[]) {
     			
     		
     	while (getline(&buffer, &length, file) != -1) 
-    	{
+    {
 
 		pid_t main_pro = getpid();
 		//get current directory
@@ -321,6 +321,10 @@ int shell(int argc, char *argv[]) {
 			{
 				kill(i, SIGTERM);
 				print_killed_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
+				vector_earse(pid_info,remember);
+				vector_earse(status_info,remember);
+				vector_earse(command_info,remember);
+
 			}
 		}
 
@@ -414,11 +418,52 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
+
+		//externel command
+		//ls
+		else if(strcmp(buffer, "/bin/ls\n") == 0)
+		{
+			 	pid_t child = fork();
+			 	print_command_executed(child);
+			 	process b;
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(a.pid));
+				*temp_3 = (int)main_pro;
+
+			
+			//稍后需要判断
+			a.status = STATUS_RUNNING;
+			vector_push_back(pid_info, temp_3);
+			vector_push_back(status_info, b.status);
+			vector_push_back(command_info, b.command);
+		
+
+  				if (child == -1) print_fork_failed();
+  				if (child == 0) 
+  				{ /* I have a child! */
+    				execl("/bin/ls", "ls", (char *) NULL);
+
+    				buffer[len] = '\0';
+    				print_exec_failed(buffer);
+   				} 
+  				else 
+  				{ 
+  					int status;
+    			int return_value = waitpid(child , &status ,0);
+   				if(return_value == -1 || !WIFEXITED(status))
+   					print_wait_failed();
+					//exit(1);
+
+
+   				
+  }
+		}
+
   	}
   		
   				free(buffer);
    				fclose(file);
-	}
+		}
 			exit(1);
 		}
 	}
