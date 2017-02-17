@@ -235,9 +235,9 @@ int shell(int argc, char *argv[]) {
 		while(!temp)
 		{	
 			printf("%s\n", argv[2]);
-			char* filename = strdup(argv[2]);
+			//char* filename = strdup(argv[2]);
 		
-			FILE *file = fopen(filename, "r");
+			FILE *file = fopen(argv[2], "r");
   			if(file == NULL)
   			{ // can not open
       			fclose(file);
