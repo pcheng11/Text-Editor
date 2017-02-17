@@ -413,10 +413,11 @@ int shell(int argc, char *argv[]) {
 
 		}
   	}
-  		temp = 1;
+  		
   				free(buffer);
    				fclose(file);
 			}
+			temp = 1;
 		}
 	}
 
