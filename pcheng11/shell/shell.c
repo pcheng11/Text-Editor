@@ -280,8 +280,8 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(command_info, a.command);
 		
 		//get stdin
-		if(buffer[len-1] == '\n')
-		buffer[len-1] = '\0';
+		//if(buffer[len-1] == '\n')
+		//buffer[len-1] = '\0';
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
@@ -303,7 +303,7 @@ int shell(int argc, char *argv[]) {
 			char* a = strdup(tell + 5);
 			int exist = 0;
 			int i = atoi(a);
-			printf("%d", i);
+			//printf("%d", i);
 			int remember;
 			for(size_t j = 0; j < vector_size(pid_info); j++)
 			{
@@ -331,7 +331,7 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//stop
-		else if(strcmp(buffer, "stop") == 0)
+		else if(strcmp(buffer, "stop\n") == 0)
 		{
 			//buffer[4] = '\0';
 			print_invalid_command(buffer);
