@@ -94,7 +94,7 @@ int shell(int argc, char *argv[]) {
 		
 		else if(strcmp(buffer, "kill\n") == 0)
 		{
-			print_invlaid_command(buffer);
+			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "kill"))
 		{
