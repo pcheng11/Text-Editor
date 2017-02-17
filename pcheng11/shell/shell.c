@@ -228,9 +228,9 @@ int shell(int argc, char *argv[]) {
 
 
 	//file input
-	if(getopt(argc, argv, "f") != -1)
+	else
 	{puts("L");
-		
+
 		int temp = 0;
 		while(!temp)
 		{puts("L");
