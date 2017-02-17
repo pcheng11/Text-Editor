@@ -439,7 +439,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				execl("/bin/ls", "ls", (char *) NULL);
-
+    				puts("l");
     				buffer[len] = '\0';
     				print_exec_failed(buffer);
    				} 
