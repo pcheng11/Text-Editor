@@ -245,7 +245,7 @@ int shell(int argc, char *argv[]) {
       			//fclose(file);
       			puts("L");
       			print_script_file_error();
-      			fclose(file);
+      			free(file);
       		
   			}
 //count line numbers
