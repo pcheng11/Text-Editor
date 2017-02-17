@@ -38,7 +38,7 @@ int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
 	//input is not a file;
 
-	if(argc > 3 || argc == 2 || (argc == 3 && getopt(argc, argv, "f") != -1))
+	if(argc > 3 || argc == 2 || (argc == 3 && getopt(argc, argv, "f") == -1))
 	{
 		print_usage();
 		return 0;
