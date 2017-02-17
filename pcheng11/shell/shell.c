@@ -231,7 +231,7 @@ int shell(int argc, char *argv[]) {
 	if(getopt(argc, argv, "f") != -1)
 	{
 		
-		FILE *file = fopen(path_to_file, "r");
+		FILE *file = fopen(argv[2], "r");
   		if(file == NULL)
   		{ // can not open
       		fclose(file);
