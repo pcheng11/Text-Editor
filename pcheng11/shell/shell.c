@@ -262,6 +262,7 @@ int shell(int argc, char *argv[]) {
 		free(directory);
 		int len = strlen(buffer);
 		char *r_temp = strdup(buffer);
+		if(r_temp[len-1] == '\n')
 		r_temp[len-1] = '\0';
 		print_command(r_temp);
 		free(r_temp);
@@ -279,6 +280,7 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(command_info, a.command);
 		
 		//get stdin
+		if(buffer[len-1] == '\n')
 		buffer[len-1] = '\0';
 		char* tell = strtok(buffer, " ");
 		//see what is the command
@@ -329,7 +331,7 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//stop
-		else if(strcmp(buffer, "stop\n") == 0)
+		else if(strcmp(buffer, "stop") == 0)
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
@@ -363,7 +365,7 @@ int shell(int argc, char *argv[]) {
 			}
 		}
 		//cont
-		else if(strcmp(buffer, "cont\n") == 0)
+		else if(strcmp(buffer, "cont") == 0)
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
