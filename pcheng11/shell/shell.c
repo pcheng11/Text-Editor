@@ -10,6 +10,8 @@
 #include <dirent.h>
 #include <string.h>
 #include <assert.h>
+ #include <sys/types.h>
+ #include <signal.h>
 typedef struct process {
   char *command;
   char *status;
