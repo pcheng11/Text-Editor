@@ -6,12 +6,12 @@
 #include "shell.h"
 #include "vector.h"
 #include <unistd.h>
-#include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
 #include <assert.h>
- #include <sys/types.h>
- #include <signal.h>
+#include <sys/types.h>
+#include <signal.h>
+#include <sys/wait.h>
 typedef struct process {
   char *command;
   char *status;
@@ -321,9 +321,9 @@ int shell(int argc, char *argv[]) {
 			{
 				kill(i, SIGTERM);
 				print_killed_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
-				vector_earse(pid_info,remember);
-				vector_earse(status_info,remember);
-				vector_earse(command_info,remember);
+				vector_erase(pid_info,remember);
+				vector_erase(status_info,remember);
+				vector_erase(command_info,remember);
 
 			}
 		}
@@ -429,10 +429,7 @@ int shell(int argc, char *argv[]) {
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(a.pid));
 				*temp_3 = (int)main_pro;
-
-			
-			//稍后需要判断
-			a.status = STATUS_RUNNING;
+			b.status = STATUS_RUNNING;
 			vector_push_back(pid_info, temp_3);
 			vector_push_back(status_info, b.status);
 			vector_push_back(command_info, b.command);
@@ -453,10 +450,7 @@ int shell(int argc, char *argv[]) {
    				if(return_value == -1 || !WIFEXITED(status))
    					print_wait_failed();
 					//exit(1);
-
-
-   				
-  }
+   				}
 		}
 
   	}
