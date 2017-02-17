@@ -293,7 +293,7 @@ int shell(int argc, char *argv[]) {
 		
 		
 		//kill
-		else if(strcmp(buffer, "kill") == 0)
+		else if(strcmp(buffer, "kill\n") == 0)
 		{
 			
 			print_invalid_command(buffer);
