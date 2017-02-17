@@ -291,7 +291,7 @@ int shell(int argc, char *argv[]) {
 		
 		
 		//kill
-		else if(strcmp(buffer, "kill\n") == 0)
+		else if(strcmp(buffer, "kill") == 0)
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
@@ -398,7 +398,7 @@ int shell(int argc, char *argv[]) {
 		}
 
 		//cd
-		else if(strcmp(buffer, "cd\n") == 0)
+		else if(strcmp(buffer, "cd") == 0)
 			print_no_directory("");
 		
 		else if(strcmp(tell, "cd") == 0)
@@ -421,7 +421,7 @@ int shell(int argc, char *argv[]) {
 
 		//externel command
 		//ls
-		else if(strcmp(buffer, "/bin/ls\n") == 0)
+		else if(strcmp(buffer, "/bin/ls") == 0)
 		{
 			 	pid_t child = fork();
 			 	print_command_executed(child);
