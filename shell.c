@@ -333,7 +333,7 @@ int shell(int argc, char *argv[]) {
 		//stop
 		else if(strcmp(buffer, "stop") == 0)
 		{
-			buffer[4] = '\0';
+			//buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "stop") == 0)
@@ -367,7 +367,7 @@ int shell(int argc, char *argv[]) {
 		//cont
 		else if(strcmp(buffer, "cont") == 0)
 		{
-			buffer[4] = '\0';
+			//buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
 		else if(strcmp(tell, "cont") == 0)
@@ -407,7 +407,7 @@ int shell(int argc, char *argv[]) {
 		{
 			char *temp_dir = strdup(buffer + 3);
 			size_t a = strlen(temp_dir);
-			temp_dir[a-1] = '\0';
+		//	temp_dir[a-1] = '\0';
 			//printf("%s", temp_dir);
 
 			// dir does not exist
@@ -441,8 +441,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				execl("/bin/ls", "ls", (char *) NULL);
-    				puts("l");
-    				buffer[len] = '\0';
+    			
     				print_exec_failed(buffer);
    				} 
   				else 
