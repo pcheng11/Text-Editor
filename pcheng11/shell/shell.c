@@ -238,6 +238,7 @@ int shell(int argc, char *argv[]) {
 			//char* filename = strdup(argv[2]);
 		
 			FILE *file = fopen(argv[2], "r");
+				puts("L");
   			if(file == NULL)
   			{ // can not open
       			fclose(file);
