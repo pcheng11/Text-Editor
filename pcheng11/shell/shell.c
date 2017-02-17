@@ -241,6 +241,7 @@ int shell(int argc, char *argv[]) {
 				puts("L");
   			if(file == NULL)
   			{ // can not open
+  				puts("L");
       			fclose(file);
       			puts("L");
       			print_script_file_error();
