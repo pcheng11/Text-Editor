@@ -70,7 +70,7 @@ int shell(int argc, char *argv[]) {
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
 		//int temp = 0;
-		while(exit_ == 0;)
+		while(exit_ == 0)
 	  {
 		pid_t main_pro = getpid();
 		//get current directory
