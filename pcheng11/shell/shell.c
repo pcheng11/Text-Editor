@@ -232,9 +232,9 @@ int shell(int argc, char *argv[]) {
 	else
 	{
 		
-		int temp = 0;
-		while(temp!=1)
-	{	
+	//	int temp = 0;
+		//while(temp!=1)
+	//{	
 		
 			FILE *file = fopen(argv[2], "r");
 			
@@ -495,7 +495,7 @@ int shell(int argc, char *argv[]) {
    				exit(0);
 		}
 		//	exit(0);
-		}
+		
 	}
 
 }
