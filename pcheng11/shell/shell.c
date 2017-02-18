@@ -42,7 +42,7 @@ void intHandler(int r) {
        exit_ = 0;
    fflush(stdout);
 }
-
+pid_t child;
 void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
@@ -255,7 +255,7 @@ int shell(int argc, char *argv[]) {
 				*loc = '\0';
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
-			 	pid_t child = fork();
+			 	child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
 				b.command = buffer;
@@ -289,7 +289,7 @@ int shell(int argc, char *argv[]) {
 				//signal
 				signal(SIGCHLD, cleanup);
 
-			 	pid_t child = fork();
+			 	 child = fork();
 			 		process b;
 			 buffer[len-1]= '\0';
 				b.command = buffer;
@@ -577,7 +577,7 @@ int shell(int argc, char *argv[]) {
 				*loc = '\0';
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
-			 	pid_t child = fork();
+			 	 child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
 				b.command = buffer;
@@ -608,7 +608,7 @@ int shell(int argc, char *argv[]) {
 			else
 			{
 				buffer[len-1]= '\0';
-			 	pid_t child = fork();
+			 	 child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
 				b.command = buffer;
