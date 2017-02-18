@@ -45,7 +45,7 @@ void intHandler(int r) {
     if (r == SIGINT) 
        exit_ = 0;
    kill(child, SIGINT);
-   printf("%d", child);
+  // printf("%d", child);
   // vector_erase(pid_info, 0);
    fflush(stdout);
 }
@@ -56,7 +56,7 @@ void cleanup(int signal) {
   int status;
   waitpid(child_b, &status, 0);
  //  kill(child_b, SIGINT);
-  printf("clean");
+//  printf("clean");
   clean = 1;
  
    fflush(stdout);
@@ -132,7 +132,7 @@ int shell(int argc, char *argv[]) {
 				{
 					int r = *(int*)vector_get(pid_info,j);
 					kill(r, SIGINT);
-					printf("%d", r);
+					//printf("%d", r);
 				}
 				vector_clear(pid_info);
 				vector_clear(command_info);
@@ -276,7 +276,7 @@ int shell(int argc, char *argv[]) {
 					token_array = strsplit(buffer, " \n", &num_tokens);
 					buffer[len-1]= '\0';
 					signal(SIGCHLD, cleanup);
-				
+				/
 				 	child_b = fork();
 			 		
 			 		
