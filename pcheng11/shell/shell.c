@@ -150,6 +150,9 @@ int shell(int argc, char *argv[]) {
 			{
 				kill(i, SIGTERM);
 				print_killed_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
+				vector_erase(pid_info,remember);
+				vector_erase(status_info,remember);
+				vector_erase(command_info,remember);
 			}
 		}
 
