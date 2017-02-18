@@ -465,7 +465,7 @@ int shell(int argc, char *argv[]) {
 		{
 				//puts("L");
 			 	pid_t child = fork();
-		
+			printf("%s", token_array[1]);
 
   				if (child == -1) 
   					print_fork_failed();
