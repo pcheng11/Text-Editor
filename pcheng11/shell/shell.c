@@ -108,7 +108,7 @@ int shell(int argc, char *argv[]) {
 
 		}
 		//exit
-		else if(strcmp(buffer, "exit\n") == 0 || cd == -1 )
+		else if(strcmp(buffer, "exit\n") == 0 || (int)cd == -1 )
 		{
 			//signal(SIGINT, intHandler);
 			exit_= 1;
