@@ -2,6 +2,7 @@ cd mini_valgrind
 cd ..
 cd mini_valgrind
 echo finished
+echo
 cd home
 kill
 cont
