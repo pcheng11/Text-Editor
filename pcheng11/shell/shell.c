@@ -147,7 +147,7 @@ int shell(int argc, char *argv[]) {
 				vector_clear(status_info);
 					for(int i = 0; i<(int) num_tokens; i++)
 					puts("(");
-  		free(token_array[i]);
+  	//	free(token_array[i]);
   		free(token_array);
 				
 			
