@@ -97,7 +97,7 @@ int shell(int argc, char *argv[]) {
 		char *buffer = NULL;
 		size_t size = 0;
 		size_t cd = getline(&buffer, &size, stdin);
-	size_t len = strlen(buffer);
+		size_t len = strlen(buffer);
 	
 		char **token_array;
 		size_t num_tokens;
@@ -271,6 +271,24 @@ int shell(int argc, char *argv[]) {
     			int return_value = waitpid(child , &status ,0);
    				if(return_value == -1 || !WIFEXITED(status))
    					print_wait_failed();
+
+   				int i = child;
+
+				int remember;
+				for(size_t j = 0; j < vector_size(pid_info); j++)
+				{
+				if(*(int*)vector_get(pid_info,j) == i)
+				{
+					exist = 1;
+					remember = j;
+					break;
+				}
+
+				}
+			
+   				vector_erase(pid_info, remember );
+				vector_erase(status_info, remember);
+				vector_erase(command_info, remember);
 					//exit(1);
    				}
 		}
