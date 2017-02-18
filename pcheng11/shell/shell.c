@@ -313,13 +313,7 @@ int shell(int argc, char *argv[]) {
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
 				printf("%d\n",clean_up );
-				for(size_t j = 1; j < vector_size(pid_info); j++)
-				{
-					vector_erase(pid_info, j);
-					vector_erase(status_info, j);
-					vector_erase(command_info, j);
 				
-				}
 				
 	
 
@@ -334,6 +328,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
 				free(temp_3);
+
 		
 
   				if (child == -1) 
@@ -348,6 +343,14 @@ int shell(int argc, char *argv[]) {
   				else 
   				{ 
   				print_command_executed(child);
+  				if(clean_up == 1)
+  				for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					vector_erase(pid_info, j);
+					vector_erase(status_info, j);
+					vector_erase(command_info, j);
+				
+				}
 					//exit(1);
    				}
 			}
