@@ -429,6 +429,7 @@ int shell(int argc, char *argv[]) {
     				execl("/bin/ls", "ls", (char *) NULL);
     			
     				print_exec_failed(buffer);
+    				break;
    				} 
   				else 
   				{ 
