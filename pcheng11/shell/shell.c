@@ -223,6 +223,81 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
+		//externel command
+		//ls
+		else if(strcmp(buffer, "/bin/ls\n") == 0)
+		{
+				//puts("L");
+			 	pid_t child = fork();
+		
+
+  				if (child == -1) 
+  					print_fork_failed();
+  				if (child == 0) 
+  				{ /* I have a child! */
+    				execl("/bin/ls", "ls", (char *) NULL);
+    			
+    				print_exec_failed(buffer);
+    				break;
+   				} 
+  				else 
+  				{ 
+  				print_command_executed(child);
+			 	//puts("L");
+			 	process b;
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
+		
+  				int status;
+    			int return_value = waitpid(child , &status ,0);
+   				if(return_value == -1 || !WIFEXITED(status))
+   					print_wait_failed();
+					//exit(1);
+   				}
+		}
+		//exit(0);
+
+		else if(strcmp(tell, "echo") == 0)
+		{
+				//puts("L");
+			 	pid_t child = fork();
+			//printf("%s", token_array[1]);
+
+  				if (child == -1) 
+  					print_fork_failed();
+  				if (child == 0) 
+  				{ /* I have a child! */
+    				execvp(buffer, &buffer);
+    			
+    				print_exec_failed(buffer);
+    				break;
+   				} 
+  				else 
+  				{ 
+  				print_command_executed(child);
+			 	//puts("L");
+			 	process b;
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
+		
+  				int status;
+    			int return_value = waitpid(child , &status ,0);
+   				if(return_value == -1 || !WIFEXITED(status))
+   					print_wait_failed();
+					//exit(1);
+   				}
+		}
+
 	 }
 		
 	}
