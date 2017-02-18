@@ -58,7 +58,7 @@ void cleanup(int signal) {
   
   int status;
   waitpid(child_b, &status, 0);
-   kill(child, SIGINT);
+   kill(child_b, SIGINT);
   printf("clean");
   clean = 1;
  
