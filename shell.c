@@ -669,7 +669,7 @@ int shell(int argc, char *argv[]) {
    					}
    				}
   			}
-  			free(buffer);
+
   			for(int i = 0; i<(int) num_tokens; i++)
    			{
    				puts("L");
@@ -692,6 +692,7 @@ int shell(int argc, char *argv[]) {
 		vector_clear(pid_info);
 		vector_clear(command_info);
 		vector_clear(status_info);
+		printf("%d", vector_size(pid_info));
    		exit(0);
 	}
 
