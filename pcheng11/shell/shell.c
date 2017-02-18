@@ -38,7 +38,7 @@ void *string_default_constructor(void) {
     
 
 int exit_ = 0;
-int clean_up = 0;
+int clean_up;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -48,12 +48,11 @@ void intHandler(int r) {
 pid_t child;
 
 void cleanup(int signal) {
-	clean_up = 1;
+  clean_up = 1;
   int status;
   waitpid(child, &status, 0);
   puts("clean\n");
 
-	
 }
 
 int shell(int argc, char *argv[]) {
@@ -343,14 +342,7 @@ int shell(int argc, char *argv[]) {
   				else 
   				{ 
   				print_command_executed(child);
-  				if(clean_up == 1)
-  				for(size_t j = 1; j < vector_size(pid_info); j++)
-				{
-					vector_erase(pid_info, j);
-					vector_erase(status_info, j);
-					vector_erase(command_info, j);
-				
-				}
+  				
 					//exit(1);
    				}
 			}
