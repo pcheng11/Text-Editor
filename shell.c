@@ -67,7 +67,8 @@ int shell(int argc, char *argv[]) {
   	//stdin input main process: no need to create another process
   	if(argc == 1)
 	{
-		process a;
+				process a;
+			pid_t main_pro = getpid();
 			a.command = argv[0];
 			int *temp_1 = malloc(sizeof(a.pid));
 			*temp_1 = (int)main_pro;
@@ -83,7 +84,7 @@ int shell(int argc, char *argv[]) {
 		signal (SIGINT,intHandler);
 		while(exit_ == 0)
 	  {
-		pid_t main_pro = getpid();
+		
 		//get current directory
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
