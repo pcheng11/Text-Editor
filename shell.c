@@ -291,7 +291,8 @@ int shell(int argc, char *argv[]) {
 		//ps
 		if(strcmp(buffer, "ps") == 0)
 		{
-		 print_process_info( vector_get(status_info, 0), *(int*)vector_get(pid_info,0), vector_get(command_info,0));
+		  for(int i = 0; i <(int) vector_size(status_info); i++)
+		 print_process_info( vector_get(status_info, i), *(int*)vector_get(pid_info,i), vector_get(command_info,i));
 
 		}
 		
