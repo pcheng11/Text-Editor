@@ -68,8 +68,8 @@ int shell(int argc, char *argv[]) {
 
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
-		int temp = 0;
-		while(temp == 0)
+		
+		while(exit_ == 0)
 	  {
 		pid_t main_pro = getpid();
 		//get current directory
@@ -96,6 +96,8 @@ int shell(int argc, char *argv[]) {
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
+		signal (SIGINT,my_handler);
+
 		if(strcmp(buffer, "ps\n") == 0)
 		{
 		 for(int i = 0; i <(int) vector_size(status_info); i++)
@@ -108,6 +110,7 @@ int shell(int argc, char *argv[]) {
 			//signal(SIGINT, intHandler);
 			temp = 1;
 		}
+
 		//kill
 		else if(strcmp(buffer, "kill\n") == 0)
 		{
