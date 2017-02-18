@@ -331,7 +331,7 @@ int shell(int argc, char *argv[]) {
 			buffer[5] = '\0';
 			buffer = realloc(buffer, strlen(buffer) + strlen(temp_dir));
 			buffer = strcat(buffer, temp_dir);
-			printf("%s", buffer);
+			//printf("%s", buffer);
 
 			// dir does not exist
 			pid_t child = fork();
@@ -339,7 +339,7 @@ int shell(int argc, char *argv[]) {
   				print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				printf("%s\n", buffer);
+    				//printf("%s\n", buffer);
     				execvp(buffer, &buffer);
     				print_exec_failed(buffer);
     				break;
