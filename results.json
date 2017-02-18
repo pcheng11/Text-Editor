@@ -1,8 +1,6 @@
 [
   {
-    "revision": "25831",
     "checksum": "1b6dab673138c6da37032335193d6f07cb959e8e  shell.c\n",
-    "timestamp": "2017-02-15 22:00:00.730981",
     "testcases": [
       {
         "description": "Attempt to cd to a directory",
@@ -95,12 +93,12 @@
         "ptsPossible": 1.0,
         "ptsEarned": 0.0
       }
-    ]
+    ],
+    "timestamp": "2017-02-15 22:00:00.730981",
+    "revision": "25831"
   },
   {
-    "revision": "26795",
     "checksum": "581315f19e9078dc5914a56b316de3573f621e4a  shell.c\n",
-    "timestamp": "2017-02-16 22:27:29.731675",
     "testcases": [
       {
         "description": "Attempt to cd to a directory",
@@ -193,12 +191,12 @@
         "ptsPossible": 1.0,
         "ptsEarned": 0.0
       }
-    ]
+    ],
+    "timestamp": "2017-02-16 22:27:29.731675",
+    "revision": "26795"
   },
   {
-    "revision": "26812",
     "checksum": "581315f19e9078dc5914a56b316de3573f621e4a  shell.c\n",
-    "timestamp": "2017-02-16 22:49:39.738081",
     "testcases": [
       {
         "description": "Attempt to cd to a directory",
@@ -291,12 +289,12 @@
         "ptsPossible": 1.0,
         "ptsEarned": 0.0
       }
-    ]
+    ],
+    "timestamp": "2017-02-16 22:49:39.738081",
+    "revision": "26812"
   },
   {
     "checksum": "bae355c69a276e7004f0557bae8306819b5af133  shell.c\n",
-    "revision": "26898",
-    "timestamp": "2017-02-17 00:00:00.577620",
     "testcases": [
       {
         "description": "Attempt to cd to a directory",
@@ -380,6 +378,106 @@
         "log": "Trying to compile your code...\nSuccessfully compiled your code..",
         "name": "memory_check_hard",
         "ptsEarned": 5.0,
+        "ptsPossible": 5.0
+      },
+      {
+        "description": "Testing echo and printing.",
+        "log": "Error: command did not run",
+        "name": "print_test",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      }
+    ],
+    "timestamp": "2017-02-17 00:00:00.577620",
+    "revision": "26898"
+  },
+  {
+    "checksum": "a47cdc17c8896c3c36972a9bc98d1f05271ee0ac  shell.c\n",
+    "revision": "27569",
+    "timestamp": "2017-02-17 22:00:01.092710",
+    "testcases": [
+      {
+        "description": "Attempt to cd to a directory",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "cd_test",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking if we can run a process in the background (this test will not pass if you do not have the basic non-built in command features implemented)",
+        "log": "Error: Command did not run immediately after we backgrounded a process",
+        "name": "check_background_process",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking if zombie processes are cleaned up",
+        "log": "Error: Process failed to run in background",
+        "name": "cleanup_zombie",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking if SIGINT is blocked",
+        "log": "Shell quit with sigint",
+        "name": "control_c_test",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking if shell exits correctly",
+        "log": "Error: Program did not exit with correct code",
+        "name": "eof_test",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking if shell exits correctly",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "exit_test",
+        "ptsEarned": 1.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Run 1 command with -f (you should have commands working already).",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "file_test",
+        "ptsEarned": 1.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Runs more commands with -f (you should have commands working already).",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "file_test_hard",
+        "ptsEarned": 1.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Runs hard commands with -f (you should have commands working already) and checks if it exits at EOF.",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "file_test_hard2",
+        "ptsEarned": 1.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Checking that invalid commands are invalidated (you should have commands working already).",
+        "log": "Error: couldn't find error message for running invalid command",
+        "name": "invalid_command",
+        "ptsEarned": 0.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Memory test - does not depend on shell functionality.",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..",
+        "name": "memory_check",
+        "ptsEarned": 1.0,
+        "ptsPossible": 1.0
+      },
+      {
+        "description": "Memory check hard (all features need to work for this).",
+        "log": "Trying to compile your code...\nSuccessfully compiled your code..\nMEMORY ERROR/LEAK!",
+        "name": "memory_check_hard",
+        "ptsEarned": 0.0,
         "ptsPossible": 5.0
       },
       {
