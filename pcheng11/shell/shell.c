@@ -103,8 +103,12 @@ int shell(int argc, char *argv[]) {
 		 print_process_info( vector_get(status_info, i), *(int*)vector_get(pid_info,i), vector_get(command_info,i));
 
 		}
-		
-		
+		//exit
+		else if(strcmp(buffer, "exit") == 0 || buffer == NULL )
+		{
+			//signal(SIGINT, intHandler);
+			exit_ = 1;
+		}
 		//kill
 		else if(strcmp(buffer, "kill\n") == 0)
 		{
