@@ -67,7 +67,17 @@ int shell(int argc, char *argv[]) {
   	//stdin input main process: no need to create another process
   	if(argc == 1)
 	{
+		process a;
+			a.command = argv[0];
+			int *temp_1 = malloc(sizeof(a.pid));
+			*temp_1 = (int)main_pro;
 
+			
+			//稍后需要判断
+			a.status = STATUS_RUNNING;
+			vector_push_back(pid_info, temp_1);
+			vector_push_back(status_info, a.status);
+			vector_push_back(command_info, a.command);
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
 		signal (SIGINT,intHandler);
@@ -79,17 +89,8 @@ int shell(int argc, char *argv[]) {
 		print_prompt(directory, main_pro);
 		free(directory);
 		//stock process
-			process a;
-			a.command = argv[0];
-			int *temp_1 = malloc(sizeof(a.pid));
-			*temp_1 = (int)main_pro;
-
 			
-			//稍后需要判断
-			a.status = STATUS_RUNNING;
-			vector_push_back(pid_info, temp_1);
-			vector_push_back(status_info, a.status);
-			vector_push_back(command_info, a.command);
+			
 		
 		//get stdin
 		char *buffer = NULL;
