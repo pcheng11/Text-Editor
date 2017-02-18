@@ -36,6 +36,11 @@ void *string_default_constructor(void) {
 }
 
 
+void intHandler(int r) {
+   exit_ = 0;
+}
+int exit_ = 0;
+
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
 	//input is not a file;
@@ -52,7 +57,7 @@ int shell(int argc, char *argv[]) {
 	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 	
 
-	int exit_ = 0;
+	
 
 	while(exit_ == 0)
   {
@@ -438,6 +443,39 @@ int shell(int argc, char *argv[]) {
 		{
 			//buffer[4] = '\0';
 			print_invalid_command(buffer);
+		}
+		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
+		{
+			char* a = token_array[1];
+			int exist = 0;
+			int i = atoi(a);
+			//printf("%d", i);
+			int remember;
+			for(size_t j = 0; j < vector_size(pid_info); j++)
+			{
+				if(*(int*)vector_get(pid_info,j) == i)
+				{
+					exist = 1;
+					remember = j;
+					break;
+				}
+
+			}
+			if(exist == 0)
+			{
+				print_no_process_found(i);
+			}
+			else
+			{
+				kill(i, SIGCONT);
+				vector_set(status_info, remember, STATUS_RUNNING);
+				
+			}
+		}
+		//exit
+		else if(strcmp(buffer, "exit") == 0 )
+		{
+			signal(SIGNIT, intHandler);
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
