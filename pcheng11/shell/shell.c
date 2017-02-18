@@ -283,7 +283,8 @@ int shell(int argc, char *argv[]) {
 		{
 			print_no_directory("");
 				for(int i = 0; i<(int) num_tokens; i++)
-  		free(token_array[i]);
+		{puts("l");
+  		free(token_array[i]);}
   		free(token_array);
 		}
 		
@@ -299,9 +300,11 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 				for(int i = 0; i<(int) num_tokens; i++)
-					{puts("l");
-  		free(token_array[i]);}
-  		free(token_array);
+				{
+						
+  				free(token_array[i]);
+  				}
+  				free(token_array);
 
 		}
 //externel command
