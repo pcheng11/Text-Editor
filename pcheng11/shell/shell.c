@@ -96,7 +96,7 @@ int shell(int argc, char *argv[]) {
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
-		signal (SIGINT,my_handler);
+		signal (SIGINT,intHandler);
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
@@ -108,7 +108,7 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "exit\n") == 0 || buffer == NULL )
 		{
 			//signal(SIGINT, intHandler);
-			temp = 1;
+			exit_= 1;
 		}
 
 		//kill
