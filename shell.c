@@ -84,7 +84,7 @@ int shell(int argc, char *argv[]) {
 		signal (SIGINT,intHandler);
 		while(exit_ == 0)
 	  {
-		k
+		
 		//get current directory
 		char *directory = getcwd(NULL, 0);
 		print_prompt(directory, main_pro);
