@@ -282,7 +282,10 @@ int shell(int argc, char *argv[]) {
 		//get stdin
 		if(buffer[len-1] == '\n')
 		buffer[len-1] = '\0';
-		char* tell = strtok(buffer, " ");
+		char **token_array;
+		size_t num_tokens;
+		token_array = strsplit(buffer, " ", &num_tokens);
+
 		//see what is the command
 		//ps
 		if(strcmp(buffer, "ps") == 0)
@@ -298,7 +301,7 @@ int shell(int argc, char *argv[]) {
 			
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "kill") == 0)
+		else if(strcmp(*token_array[0], "kill") == 0 && num_tokens == 2)
 		{
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -336,7 +339,7 @@ int shell(int argc, char *argv[]) {
 			//buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "stop") == 0)
+		else if(strcmp(*token_array[0], "stop") == 0 && num_tokens == 2)
 		{
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -370,7 +373,7 @@ int shell(int argc, char *argv[]) {
 			//buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "cont") == 0)
+		else if(strcmp(*token_array[0], "cont") == 0 && num_tokens == 2)
 		{
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -403,7 +406,7 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cd") == 0)
 			print_no_directory("");
 		
-		else if(strcmp(tell, "cd") == 0)
+		else if(strcmp(*token_array[0], "cd") == 0 && num_tokens == 2)
 		{
 			char *temp_dir = strdup(buffer + 3);
 		
@@ -452,7 +455,7 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 		}
-		exit(0);
+		//exit(0);
 
   	}
   		
