@@ -471,7 +471,7 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execlp(buffer, buffer);
+    				execlp(buffer, buffer,  (char*)NULL);
     			
     				print_exec_failed(buffer);
    				} 
