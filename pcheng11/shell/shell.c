@@ -322,12 +322,13 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(tell, "echo") == 0)
 		{
-			buffer[4] = ' ';
-			buffer[5] = '\0';
+			
 
 			char *temp_dir = strdup(buffer + 5);
 				size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
+			buffer[4] = ' ';
+			buffer[5] = '\0';
 			buffer = realloc(buffer, strlen(buffer) + strlen(temp_dir));
 			buffer = strcat(buffer, temp_dir);
 			printf("%s", buffer);
