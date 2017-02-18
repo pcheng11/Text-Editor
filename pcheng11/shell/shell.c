@@ -92,7 +92,7 @@ int shell(int argc, char *argv[]) {
 
 		signal (SIGINT,intHandler);
 		while(exit_ == 0)
-	  {
+	{
 		
 		//get current directory
 		char *directory = getcwd(NULL, 0);
@@ -362,7 +362,9 @@ int shell(int argc, char *argv[]) {
    				}
    			}
 		}
-		free(token_array);
+		for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 
 
 	 }
