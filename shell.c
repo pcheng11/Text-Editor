@@ -353,7 +353,6 @@ int shell(int argc, char *argv[]) {
 			{
 				
 				//signal
-				signal(SIGCHLD, cleanup);
 				
 				
 				
@@ -702,7 +701,7 @@ int shell(int argc, char *argv[]) {
 
 			else
 			{
-				signal(SIGCHLD, cleanup);
+				
 				//clean up
 				
 				
