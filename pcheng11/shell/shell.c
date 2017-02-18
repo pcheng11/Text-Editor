@@ -103,7 +103,7 @@ int shell(int argc, char *argv[]) {
 
 		}
 		//exit
-		else if(strcmp(buffer, "exit") == 0 || buffer == NULL )
+		else if(strcmp(buffer, "exit\n") == 0 || buffer == NULL )
 		{
 			//signal(SIGINT, intHandler);
 			temp = 1;
