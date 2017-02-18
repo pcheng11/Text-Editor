@@ -461,7 +461,7 @@ int shell(int argc, char *argv[]) {
 		}
 		//exit(0);
 
-		else if(strcmp(buffer, "/bin/ls") == 0)
+		else if(strcmp(token_array[0], "echo") == 0)
 		{
 				//puts("L");
 			 	pid_t child = fork();
@@ -471,7 +471,7 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execl("/bin/ls", "ls", (char *) NULL);
+    				execvp(token_array[0], buffer);
     			
     				print_exec_failed(buffer);
    				} 
@@ -495,7 +495,7 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 		}
-		
+
 
   	}
   		
