@@ -650,10 +650,7 @@ int shell(int argc, char *argv[]) {
    				}
    			}
 		
-		else
-		{
-			print_invalid_command(buffer);
-		}
+		
 
   	}
   		
