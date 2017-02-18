@@ -1,5 +1,6 @@
 cd mini_valgrind
 cd ..
+cd mini_valgrind
 cd home
 kill
 cont
