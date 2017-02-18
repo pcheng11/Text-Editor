@@ -741,14 +741,14 @@ int shell(int argc, char *argv[]) {
   		free(token_array[i]);
   		}
   		free(token_array);
-  		free(buffer);
+  		
 	
 
 
 	 }
   	
   		
-  				
+  				free(buffer);
    				fclose(file);
    				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
