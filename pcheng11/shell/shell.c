@@ -38,7 +38,7 @@ void *string_default_constructor(void) {
    
 
 static int exit_ = 0;
-
+static int clean = 0;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -51,7 +51,7 @@ void cleanup(int signal) {
   
   int status;
   waitpid(child, &status, 0);
-  
+  clean = 1;
  
    fflush(stdout);
 
@@ -290,6 +290,7 @@ int shell(int argc, char *argv[]) {
   					else 
   					{ 
   					print_command_executed(child);
+  					printf("%d", clean);
   	   				}
 				}
 
