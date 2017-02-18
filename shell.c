@@ -476,7 +476,8 @@ int shell(int argc, char *argv[]) {
 		//exit
 		else if(strcmp(buffer, "exit") == 0 )
 		{
-			signal(SIGINT, intHandler);
+			//signal(SIGINT, intHandler);
+			exit_ = 1;
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
