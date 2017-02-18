@@ -279,7 +279,6 @@ int shell(int argc, char *argv[]) {
 				{
 				if(*(int*)vector_get(pid_info,j) == i)
 				{
-					exist = 1;
 					remember = j;
 					break;
 				}
