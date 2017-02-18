@@ -48,12 +48,10 @@ void intHandler(int r) {
 pid_t child;
 
 void cleanup(int signal) {
-	if(signal == SIGCHLD)
-
-	clean_up = 1;
+	
   int status;
   waitpid(child, &status, 0);
-  
+  puts("cleen");
 
 	
 }
