@@ -124,6 +124,18 @@ int shell(int argc, char *argv[]) {
 		//exit
 		else if(strcmp(buffer, "exit\n") == 0 || (int)cd == -1 )
 		{
+
+
+				
+				for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					int child = *(int*)vector_get(pid_info,j)
+
+					kill(child, SIGINT);
+					printf("%d", child);
+				
+				}
+				
 			
 			exit_= 1;
 		}
