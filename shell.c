@@ -343,7 +343,7 @@ int shell(int argc, char *argv[]) {
   				else 
   				{ 
   				print_command_executed(child);
-  				if(clean_up == 1)
+  				//if(clean_up == 1)
   				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
 					vector_erase(pid_info, j);
