@@ -431,18 +431,18 @@ int shell(int argc, char *argv[]) {
 			 	print_command_executed(child);
 			 	process b;
 				b.command = buffer;
-				int *temp_3 = malloc(sizeof(a.pid));
-				*temp_3 = (int)main_pro;
-			b.status = STATUS_RUNNING;
-			vector_push_back(pid_info, temp_3);
-			vector_push_back(status_info, b.status);
-			vector_push_back(command_info, b.command);
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
 		
 
   				if (child == -1) print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execl("/bin/ls",  (char *) NULL);
+    				execl("/bin/ls", "ls" (char *) NULL);
     			
     				print_exec_failed(buffer);
    				} 
