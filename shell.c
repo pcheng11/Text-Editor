@@ -697,7 +697,7 @@ int shell(int argc, char *argv[]) {
    				}
    			}
   		}
-  		for(int i = 0; i< num_tokens; i++)
+  		for(int i = 0; i<(int) num_tokens; i++)
   		free(token_array[i]);
   		free(token_array);
   	}
