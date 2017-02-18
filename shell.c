@@ -457,8 +457,9 @@ int shell(int argc, char *argv[]) {
   		
   				free(buffer);
    				fclose(file);
+   				exit(0);
 		}
-			exit(0);
+		//	exit(0);
 		}
 	}
 
