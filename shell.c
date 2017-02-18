@@ -299,6 +299,7 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 				for(int i = 0; i<(int) num_tokens; i++)
+					puts("l");
   		free(token_array[i]);
   		free(token_array);
 
@@ -331,7 +332,7 @@ int shell(int argc, char *argv[]) {
   				if (child == -1) 
   					print_fork_failed();
   				if
-  				 (child == 0) 
+  							 (child == 0) 
   				{ 
     				execvp(token_array[0], token_array);
     			
@@ -781,7 +782,8 @@ int shell(int argc, char *argv[]) {
 		
 	}
 
-	vector_clear(pid_info);
+			
+			vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
 return 0;
