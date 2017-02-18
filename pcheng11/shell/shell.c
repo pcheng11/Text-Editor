@@ -230,7 +230,7 @@ int shell(int argc, char *argv[]) {
 		{
 			char *temp_dir = token_array[1];
 				size_t a = strlen(temp_dir);
-			temp_dir[a-1] = '\0';
+			//temp_dir[a-1] = '\0';
 			//printf("%s", temp_dir);
 
 			// dir does not exist
