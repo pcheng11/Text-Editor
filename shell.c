@@ -38,6 +38,7 @@ void *string_default_constructor(void) {
     
 
 int exit_ = 0;
+int clean_up = 0;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -49,6 +50,7 @@ pid_t child;
 void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
+  clean_up = 1;
 
 	
 }
@@ -309,6 +311,19 @@ int shell(int argc, char *argv[]) {
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
+
+				if(clean_up == 1)
+				{
+					for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					vector_erase(pid_info, j);
+					vector_erase(status_info, j);
+					vector_erase(command_info, j);
+				
+				}
+				
+				}
+
 			 	child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
@@ -343,6 +358,17 @@ int shell(int argc, char *argv[]) {
 				
 				//signal
 				signal(SIGCHLD, cleanup);
+				if(clean_up == 1)
+				{
+					for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					vector_erase(pid_info, j);
+					vector_erase(status_info, j);
+					vector_erase(command_info, j);
+				
+				}
+				
+				}
 
 			 	 child = fork();
 			 		process b;
@@ -652,7 +678,20 @@ int shell(int argc, char *argv[]) {
 				*loc = '\0';
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
+
 				signal(SIGCHLD, cleanup);
+				if(clean_up == 1)
+				{
+					for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					vector_erase(pid_info, j);
+					vector_erase(status_info, j);
+					vector_erase(command_info, j);
+				
+				}
+				
+				}
+
 			 	 child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
@@ -684,6 +723,18 @@ int shell(int argc, char *argv[]) {
 			else
 			{
 				signal(SIGCHLD, cleanup);
+				//clean up
+				if(clean_up == 1)
+				{
+					for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					vector_erase(pid_info, j);
+					vector_erase(status_info, j);
+					vector_erase(command_info, j);
+				
+				}
+				
+				}
 			 	 child = fork();
 			 		process b;
 			 	buffer[len-1]= '\0';
