@@ -280,13 +280,13 @@ int shell(int argc, char *argv[]) {
 		}
 		//exit(0);
 
-		else if(strcmp(tell, "echo\n") == 0)
+		else if(strcmp(buffer, "echo\n") == 0)
 		{
 
-			char *temp_dir = strdup(buffer + 5);
+			/*char *temp_dir = strdup(buffer + 5);
 				size_t a = strlen(temp_dir);
 				temp_dir[a-1] = '\0';
-				//puts("L");
+				//puts("L");*/
 			 	pid_t child = fork();
 			//printf("%s", token_array[1]);
 
@@ -295,7 +295,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				printf("%s\n", buffer);
-    				execlp(buffer, temp_dir, (char*)NULL);
+    				execlp(buffer, &buffer);
     				print_exec_failed(buffer);
     				break;
    				} 
