@@ -312,7 +312,7 @@ int shell(int argc, char *argv[]) {
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
-
+				printf("%d\n",clean_up );
 				if(clean_up == 1)
 				{
 					for(size_t j = 1; j < vector_size(pid_info); j++)
