@@ -234,7 +234,7 @@ int shell(int argc, char *argv[]) {
 
 //stock process
 			process a;
-			a.command = argv;
+			a.command = argv[0];
 			int *temp_1 = malloc(sizeof(a.pid));
 			*temp_1 = (int)main_pro;
 
