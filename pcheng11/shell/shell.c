@@ -280,7 +280,7 @@ int shell(int argc, char *argv[]) {
 		}
 		//exit(0);
 
-		else if(strcmp(tell, "echo") == 0)
+		else if(strcmp(tell, "echo\n") == 0)
 		{
 
 			char *temp_dir = strdup(buffer + 5);
