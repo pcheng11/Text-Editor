@@ -146,6 +146,7 @@ int shell(int argc, char *argv[]) {
 				vector_clear(command_info);
 				vector_clear(status_info);
 					for(int i = 0; i<(int) num_tokens; i++)
+					puts("(");
   		free(token_array[i]);
   		free(token_array);
 				
@@ -283,7 +284,7 @@ int shell(int argc, char *argv[]) {
 		{
 			print_no_directory("");
 				for(int i = 0; i<(int) num_tokens; i++)
-		{puts("l");
+		{
   		free(token_array[i]);}
   		free(token_array);
 		}
