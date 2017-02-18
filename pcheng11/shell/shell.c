@@ -255,7 +255,7 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execl("/bin/ls", "ls", (char *) NULL);
+    				execvp(buffer, &buffer);
     			
     				print_exec_failed(buffer);
     				break;
