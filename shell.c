@@ -397,7 +397,7 @@ int shell(int argc, char *argv[]) {
 			
     		
     	while (getline(&buffer, &length, file) != -1) 
-    {
+	{
 
 		pid_t main_pro = getpid();
 		//get current directory
@@ -658,7 +658,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
 		
-free(temp_3);
+				free(temp_3);
   				if (child == -1) 
   					print_fork_failed();
   				if (child == 0) 
@@ -696,12 +696,11 @@ free(temp_3);
 					//exit(1);
    				}
    			}
-		
-		
-
+  		}
+  		for(int i = 0; i< num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
   	}
-  	free(token_array);
-  }
   		
   				free(buffer);
    				fclose(file);
