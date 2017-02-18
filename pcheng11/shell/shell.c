@@ -119,7 +119,9 @@ int shell(int argc, char *argv[]) {
 		{
 		 for(int i = 0; i <(int) vector_size(status_info); i++)
 		 print_process_info( vector_get(status_info, i), *(int*)vector_get(pid_info,i), vector_get(command_info,i));
-
+			for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 		}
 		//exit
 		else if(strcmp(buffer, "exit\n") == 0 || (int)cd == -1 )
@@ -138,6 +140,9 @@ int shell(int argc, char *argv[]) {
 					vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
+					for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 				
 			
 			return 0;
@@ -148,6 +153,9 @@ int shell(int argc, char *argv[]) {
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 		}
 		else if(strcmp(token_array[0], "kill") == 0 && num_tokens == 2)
 		{
@@ -178,6 +186,9 @@ int shell(int argc, char *argv[]) {
 				vector_erase(status_info,remember);
 				vector_erase(command_info,remember);
 			}
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 			
 		}
 
@@ -186,6 +197,9 @@ int shell(int argc, char *argv[]) {
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 		}
 		else if(strcmp(token_array[0], "stop") == 0 && num_tokens == 2)
 		{
@@ -214,6 +228,9 @@ int shell(int argc, char *argv[]) {
 				vector_set(status_info, remember, STATUS_STOPPED);
 				print_stopped_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
 			}
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 
 		}
 		//cont
@@ -221,6 +238,9 @@ int shell(int argc, char *argv[]) {
 		{
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
@@ -248,11 +268,19 @@ int shell(int argc, char *argv[]) {
 				vector_set(status_info, remember, STATUS_RUNNING);
 				
 			}
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 		}
 
 		//cd
 		else if(strcmp(buffer, "cd\n") == 0)
+		{
 			print_no_directory("");
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
+		}
 		
 		else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 		{
@@ -264,6 +292,10 @@ int shell(int argc, char *argv[]) {
 			}
 			else
 				chdir(temp_dir);
+
+				for(int i = 0; i<(int) num_tokens; i++)
+  		free(token_array[i]);
+  		free(token_array);
 
 		}
 //externel command
@@ -359,12 +391,15 @@ int shell(int argc, char *argv[]) {
 				vector_erase(status_info, remember);
 				vector_erase(command_info, remember);
 					//exit(1);
+
    				}
    			}
-		}
-		for(int i = 0; i<(int) num_tokens; i++)
+
+   			for(int i = 0; i<(int) num_tokens; i++)
   		free(token_array[i]);
   		free(token_array);
+		}
+	
 
 
 	 }
