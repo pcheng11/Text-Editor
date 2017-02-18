@@ -35,7 +35,7 @@ void *string_default_constructor(void) {
   return calloc(1, sizeof(char));
 }
 
-    volatile sig_atomic_t clean_up;
+   
 
 int exit_ = 0;
 
@@ -52,9 +52,9 @@ void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
   
-  printf("clean %d", child);
+ 
    fflush(stdout);
-  clean_up = 1;
+
 
 }
 
@@ -342,9 +342,7 @@ int shell(int argc, char *argv[]) {
   				
 
   				print_command_executed(child);
-  					printf("%d\n",clean_up );
-				if(clean_up == 1)
-					puts("YP");
+  					
   				
 					//exit(1);
    				}
