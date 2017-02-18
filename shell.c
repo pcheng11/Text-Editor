@@ -46,7 +46,23 @@ pid_t child;
 void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
-  write(1,"cleanup!\n",9);
+    int i = child;
+
+				int remember = 0;
+				for(size_t j = 0; j < vector_size(pid_info); j++)
+				{
+				if(*(int*)vector_get(pid_info,j) == i)
+				{
+					remember = j;
+					break;
+				}
+
+				}
+			
+   				vector_erase(pid_info, remember );
+				vector_erase(status_info, remember);
+				vector_erase(command_info, remember);
+					//exit(1);
 }
 
 int shell(int argc, char *argv[]) {
