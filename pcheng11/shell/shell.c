@@ -70,7 +70,7 @@ int shell(int argc, char *argv[]) {
 
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
-		
+		signal (SIGINT,intHandler);
 		while(exit_ == 0)
 	  {
 		pid_t main_pro = getpid();
@@ -98,7 +98,7 @@ int shell(int argc, char *argv[]) {
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
-		signal (SIGINT,intHandler);
+		
 
 		if(strcmp(buffer, "ps\n") == 0)
 		{
