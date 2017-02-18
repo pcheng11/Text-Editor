@@ -311,14 +311,6 @@ int shell(int argc, char *argv[]) {
 				token_array = strsplit(buffer, " \n", &num_tokens);
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
-				printf("%d\n",clean_up );
-				if(clean_up == 1)
-					puts("YP");
-
-			
-				
-	
-
 			 	child = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
@@ -344,6 +336,10 @@ int shell(int argc, char *argv[]) {
    				} 
   				else 
   				{ 
+  					printf("%d\n",clean_up );
+				if(clean_up == 1)
+					puts("YP");
+
   				print_command_executed(child);
   				
 					//exit(1);
