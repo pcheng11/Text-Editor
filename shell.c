@@ -241,6 +241,11 @@ int shell(int argc, char *argv[]) {
 		else 
 		{
 				//puts("L");
+			char* loc = strstr(buffer, "&")
+			if(loc != NULL)
+			{
+				*loc = '\0';
+			}
 
 			 	pid_t child = fork();
 			 		process b;
