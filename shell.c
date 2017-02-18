@@ -37,7 +37,7 @@ void *string_default_constructor(void) {
 
    
 
-int exit_ = 0;
+static int exit_ = 0;
 
 
 void intHandler(int r) {
@@ -45,7 +45,7 @@ void intHandler(int r) {
        exit_ = 0;
    fflush(stdout);
 }
-pid_t child;
+static pid_t child;
 
 void cleanup(int signal) {
   
