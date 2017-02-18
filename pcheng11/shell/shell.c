@@ -566,13 +566,27 @@ int shell(int argc, char *argv[]) {
 			else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 			{
 				char* a = token_array[1];
-
-				if(opendir(a)== NULL)
+				if(*a == '/')
 				{
-					print_no_directory(a);
+					char * b = get_full_path(a);
+					if(opendir(b)== NULL)
+					{
+						print_no_directory(b);
+					}
+					else
+						chdir(b);
+					free(b);
 				}
+
 				else
-					chdir(a);
+				{
+					if(opendir(a)== NULL)
+					{
+						print_no_directory(a);
+					}
+					else
+						chdir(a);
+				}
 
 			}
 
