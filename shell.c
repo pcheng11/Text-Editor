@@ -414,12 +414,12 @@ int shell(int argc, char *argv[]) {
 
 			// dir does not exist
 
-			if(opendir(temp_dir)== NULL)
+			if(opendir(a)== NULL)
 			{
-				print_no_directory(temp_dir);
+				print_no_directory(a);
 			}
 			else
-				chdir(temp_dir);
+				chdir(a);
 
 		}
 
