@@ -442,7 +442,7 @@ int shell(int argc, char *argv[]) {
   				if (child == -1) print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execl("/bin/ls", "ls", (char *) NULL);
+    				execl("/bin/ls",  (char *) NULL);
     			
     				print_exec_failed(buffer);
    				} 
