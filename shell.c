@@ -237,15 +237,42 @@ int shell(int argc, char *argv[]) {
 				chdir(temp_dir);
 
 		}
-
+//externel command
 		else 
 		{
-				//puts("L");
+			//background
 			char* loc = strstr(buffer, "&");
 			if(loc != NULL)
 			{
 				*loc = '\0';
 				token_array = strsplit(buffer, " \n", &num_tokens);
+				buffer[len-1]= '\0';
+			 	pid_t child = fork();
+			 		process b;
+			 		//buffer[len-1]= '\0';
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
+		
+
+  				if (child == -1) 
+  					print_fork_failed();
+  				if (child == 0) 
+  				{ 
+    				execvp(token_array[0], token_array);
+    			
+    				print_exec_failed(buffer);
+    				break;
+   				} 
+  				else 
+  				{ 
+  				print_command_executed(child);
+					//exit(1);
+   				}
 			}
 			else
 				buffer[len-1]= '\0';
