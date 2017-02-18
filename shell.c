@@ -465,13 +465,13 @@ int shell(int argc, char *argv[]) {
 		{
 				//puts("L");
 			 	pid_t child = fork();
-			printf("%s", token_array[1]);
+			//printf("%s", token_array[1]);
 
   				if (child == -1) 
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execlp("echo", token_array[1]);
+    				execlp(buffer, buffer);
     			
     				print_exec_failed(buffer);
    				} 
