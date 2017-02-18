@@ -231,7 +231,7 @@ int shell(int argc, char *argv[]) {
 	//file input
 	else
 	{
-
+pid_t main_pro = getpid();
 //stock process
 			process a;
 			a.command = argv[0];
