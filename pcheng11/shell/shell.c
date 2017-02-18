@@ -429,16 +429,6 @@ int shell(int argc, char *argv[]) {
 		{
 				//puts("L");
 			 	pid_t child = fork();
-			 	print_command_executed(child);
-			 	//puts("L");
-			 	process b;
-				b.command = buffer;
-				int *temp_3 = malloc(sizeof(b.pid));
-				*temp_3 = (int)child;
-				b.status = STATUS_RUNNING;
-				vector_push_back(pid_info, temp_3);
-				vector_push_back(status_info, b.status);
-				vector_push_back(command_info, b.command);
 		
 
   				if (child == -1) 
