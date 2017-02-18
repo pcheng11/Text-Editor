@@ -45,9 +45,9 @@ void intHandler(int r) {
 
 void cleanup(int signal) {
   int status;
-  while (waitpid((pid_t) (-1), 0, WNOHANG) > 0) {}
+  waitpid(child, &status, 0);
+  write(1,"cleanup!\n",9);
 }
-
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
