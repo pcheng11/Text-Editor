@@ -145,12 +145,7 @@ int shell(int argc, char *argv[]) {
 					vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
-					for(int i = 0; i<(int) num_tokens; i++)
-					puts("(");
-  	//	free(token_array[i]);
-  		free(token_array);
-				
-			
+					
 			return 0;
 		}
 
@@ -192,9 +187,6 @@ int shell(int argc, char *argv[]) {
 				vector_erase(status_info,remember);
 				vector_erase(command_info,remember);
 			}
-				for(int i = 0; i<(int) num_tokens; i++)
-  		free(token_array[i]);
-  		free(token_array);
 			
 		}
 
@@ -234,9 +226,7 @@ int shell(int argc, char *argv[]) {
 				vector_set(status_info, remember, STATUS_STOPPED);
 				print_stopped_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
 			}
-				for(int i = 0; i<(int) num_tokens; i++)
-  		free(token_array[i]);
-  		free(token_array);
+			
 
 		}
 		//cont
@@ -274,9 +264,7 @@ int shell(int argc, char *argv[]) {
 				vector_set(status_info, remember, STATUS_RUNNING);
 				
 			}
-				for(int i = 0; i<(int) num_tokens; i++)
-  		free(token_array[i]);
-  		free(token_array);
+	
 		}
 
 		//cd
@@ -300,13 +288,7 @@ int shell(int argc, char *argv[]) {
 			else
 				chdir(temp_dir);
 
-				for(int i = 0; i<(int) num_tokens; i++)
-				{
-						
-  				free(token_array[i]);
-  				}
-  				free(token_array);
-
+			
 		}
 //externel command
 		else 
@@ -411,13 +393,16 @@ int shell(int argc, char *argv[]) {
 				vector_erase(command_info, remember);
 					//exit(1);
 
-   				}
    			}
+   		}
 
    			for(int i = 0; i<(int) num_tokens; i++)
+   		{
+   			puts("L");
   		free(token_array[i]);
+  	}
   		free(token_array);
-		}
+	}
 	
 
 
