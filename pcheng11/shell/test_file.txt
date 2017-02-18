@@ -1,5 +1,6 @@
 cd mini_valgrind
 cd ..
+ls
 cd mini_valgrind
 echo finished
 echo
