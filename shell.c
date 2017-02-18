@@ -260,6 +260,7 @@ int shell(int argc, char *argv[]) {
   				print_command_executed(child);
 			 	//puts("L");
 			 	process b;
+			 	buffer[len-1] = '\0';
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(b.pid));
 				*temp_3 = (int)child;
