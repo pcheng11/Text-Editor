@@ -231,19 +231,6 @@ int shell(int argc, char *argv[]) {
 	//file input
 	else
 	{
-pid_t main_pro = getpid();
-//stock process
-			process a;
-			a.command = argv[0];
-			int *temp_1 = malloc(sizeof(a.pid));
-			*temp_1 = (int)main_pro;
-
-			
-			//稍后需要判断
-			a.status = STATUS_RUNNING;
-			vector_push_back(pid_info, temp_1);
-			vector_push_back(status_info, a.status);
-			vector_push_back(command_info, a.command);
 		
 		int temp = 0;
 		while(temp!=1)
@@ -265,6 +252,19 @@ pid_t main_pro = getpid();
    		  		char *buffer = NULL;
     			size_t length = 0;
     			
+			pid_t main_pro = getpid();
+//stock process
+			process a;
+			a.command = argv[0];
+			int *temp_1 = malloc(sizeof(a.pid));
+			*temp_1 = (int)main_pro;
+
+			
+			//稍后需要判断
+			a.status = STATUS_RUNNING;
+			vector_push_back(pid_info, temp_1);
+			vector_push_back(status_info, a.status);
+			vector_push_back(command_info, a.command);
     		
     	while (getline(&buffer, &length, file) != -1) 
     {
