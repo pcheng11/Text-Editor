@@ -35,11 +35,12 @@ void *string_default_constructor(void) {
   return calloc(1, sizeof(char));
 }
 
+int exit_ = 0;
 
 void intHandler(int r) {
    exit_ = 0;
 }
-int exit_ = 0;
+
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
@@ -475,7 +476,7 @@ int shell(int argc, char *argv[]) {
 		//exit
 		else if(strcmp(buffer, "exit") == 0 )
 		{
-			signal(SIGNIT, intHandler);
+			signal(SIGINT, intHandler);
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
