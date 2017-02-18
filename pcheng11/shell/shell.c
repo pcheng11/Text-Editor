@@ -246,10 +246,11 @@ int shell(int argc, char *argv[]) {
 			{
 				*loc = '\0';
 			}
-
+			else
+				buffer[len-1]= '\0';
 			 	pid_t child = fork();
 			 		process b;
-			 		buffer[len-1]= '\0';
+			 		//buffer[len-1]= '\0';
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(b.pid));
 				*temp_3 = (int)child;
