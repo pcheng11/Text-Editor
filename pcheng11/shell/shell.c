@@ -303,7 +303,7 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(token_array[0], "kill") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 			//printf("%d", i);
@@ -341,7 +341,7 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(token_array[0], "stop") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 			//printf("%d", i);
@@ -375,7 +375,7 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 			//printf("%d", i);
@@ -408,7 +408,7 @@ int shell(int argc, char *argv[]) {
 		
 		else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 		{
-			char *temp_dir = strdup(buffer + 3);
+			char* a = token_array[1];
 		
 			//printf("%s", temp_dir);
 
