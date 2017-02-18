@@ -137,7 +137,7 @@ int shell(int argc, char *argv[]) {
 				}
 				
 			
-			exit_= 1;
+			return 0;
 		}
 
 		//kill
@@ -540,7 +540,7 @@ int shell(int argc, char *argv[]) {
 				}
 				
 			
-			exit_= 1;
+			return 0;
 
 			
 		}
