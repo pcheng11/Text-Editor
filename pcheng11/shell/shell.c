@@ -288,6 +288,7 @@ int shell(int argc, char *argv[]) {
 				temp_dir[a-1] = '\0';
 				//puts("L");*/
 			 	pid_t child = fork();
+			 	buffer[len-1]= '\0';
 			//printf("%s", token_array[1]);
 
   				if (child == -1) 
