@@ -43,6 +43,7 @@ static int clean = 0;
 void intHandler(int r) {
     if (r == SIGINT) 
        exit_ = 0;
+   kill(child, SIGINT);
    fflush(stdout);
 }
 static pid_t child;
@@ -290,7 +291,7 @@ int shell(int argc, char *argv[]) {
   					else 
   					{ 
   					print_command_executed(child);
-  					printf("%d\n", clean);
+  				//	printf("%d\n", clean);
   	   				}
 				}
 
