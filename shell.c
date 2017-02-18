@@ -282,6 +282,10 @@ int shell(int argc, char *argv[]) {
 
 		else if(strcmp(tell, "echo") == 0)
 		{
+
+			char *temp_dir = strdup(buffer + 5);
+				size_t a = strlen(temp_dir);
+				temp_dir[a-1] = '\0';
 				//puts("L");
 			 	pid_t child = fork();
 			//printf("%s", token_array[1]);
@@ -291,7 +295,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				printf("%s\n", buffer);
-    				execvp(buffer, &buffer);
+    				execvp(buffer, &temp_dir);
     				print_exec_failed(buffer);
     				break;
    				} 
