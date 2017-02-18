@@ -312,7 +312,10 @@ int shell(int argc, char *argv[]) {
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
 				printf("%d\n",clean_up );
-				
+				if(clean_up == 1)s
+					puts("YP");
+
+			
 				
 	
 
