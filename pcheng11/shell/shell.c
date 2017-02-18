@@ -35,10 +35,10 @@ void *string_default_constructor(void) {
   return calloc(1, sizeof(char));
 }
 
-    
+    volatile sig_atomic_t clean_up;
 
 int exit_ = 0;
-int clean_up;
+
 
 void intHandler(int r) {
     if (r == SIGINT) 
