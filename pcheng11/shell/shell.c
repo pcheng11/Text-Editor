@@ -43,6 +43,11 @@ void intHandler(int r) {
    fflush(stdout);
 }
 
+void cleanup(int signal) {
+  int status;
+  while (waitpid((pid_t) (-1), 0, WNOHANG) > 0) {}
+}
+
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
@@ -280,10 +285,13 @@ int shell(int argc, char *argv[]) {
 
 			else
 			{
-				buffer[len-1]= '\0';
+				
+				//signal
+				signal(SIGCHLD, cleanup);
+
 			 	pid_t child = fork();
 			 		process b;
-			 		//buffer[len-1]= '\0';
+			 buffer[len-1]= '\0';
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(b.pid));
 				*temp_3 = (int)child;
