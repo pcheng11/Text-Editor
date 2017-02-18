@@ -94,7 +94,8 @@ int shell(int argc, char *argv[]) {
 		//get stdin
 		char *buffer = NULL;
 		size_t size = 0;
-		getline(&buffer, &size, stdin);
+		size_t cd = getline(&buffer, &size, stdin);
+
 		char* tell = strtok(buffer, " ");
 		//see what is the command
 		//ps
@@ -107,7 +108,7 @@ int shell(int argc, char *argv[]) {
 
 		}
 		//exit
-		else if(strcmp(buffer, "exit\n") == 0 || buffer == NULL )
+		else if(strcmp(buffer, "exit\n") == 0 || cd == -1 )
 		{
 			//signal(SIGINT, intHandler);
 			exit_= 1;
