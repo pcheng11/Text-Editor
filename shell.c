@@ -35,6 +35,10 @@ void *string_default_constructor(void) {
   return calloc(1, sizeof(char));
 }
 
+vector *pid_info = int_vector_create();
+	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+
 int exit_ = 0;
 
 void intHandler(int r) {
@@ -62,9 +66,7 @@ int shell(int argc, char *argv[]) {
 	}
 	
 // create 3 vectors to keep track of process info
-	vector *pid_info = int_vector_create();
-	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	
 	
 
 	process a;
