@@ -322,7 +322,7 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(tell, "echo") == 0)
 		{
-			buffer[4] = " ";
+			buffer[4] = ' ';
 			buffer[5] = '\0';
 
 			char *temp_dir = strdup(buffer + 5);
