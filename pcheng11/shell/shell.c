@@ -82,7 +82,7 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(status_info, a.status);
 			vector_push_back(command_info, a.command);
 
-
+			free(temp_1);
 
   	//stdin input main process: no need to create another process
   	if(argc == 1)
@@ -135,6 +135,9 @@ int shell(int argc, char *argv[]) {
 					printf("%d", child);
 				
 				}
+					vector_clear(pid_info);
+				vector_clear(command_info);
+				vector_clear(status_info);
 				
 			
 			return 0;
@@ -282,6 +285,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(pid_info, temp_3);
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
+				free(temp_3);
 		
 
   				if (child == -1) 
@@ -316,7 +320,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(pid_info, temp_3);
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
-		
+			free(temp_3);
 
   				if (child == -1) 
   					print_fork_failed();
@@ -538,6 +542,9 @@ int shell(int argc, char *argv[]) {
 					printf("%d", child);
 				
 				}
+				vector_clear(pid_info);
+				vector_clear(command_info);
+				vector_clear(status_info);
 				
 			
 			return 0;
@@ -617,7 +624,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
 		
-
+					free(temp_3);
   				if (child == -1) 
   					print_fork_failed();
   				if (child == 0) 
@@ -648,7 +655,7 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(status_info, b.status);
 				vector_push_back(command_info, b.command);
 		
-
+free(temp_3);
   				if (child == -1) 
   					print_fork_failed();
   				if (child == 0) 
@@ -702,7 +709,9 @@ int shell(int argc, char *argv[]) {
 					printf("%d", child);
 				
 				}
-				
+				vector_clear(pid_info);
+				vector_clear(command_info);
+				vector_clear(status_info);
    				exit(0);
 		}
 		//	exit(0);
