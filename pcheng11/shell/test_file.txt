@@ -13,4 +13,3 @@ sleep 10&
 ps
 /bin/ls
 ps
-exit
