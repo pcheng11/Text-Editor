@@ -272,7 +272,7 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execvp(tell, &buffer);
+    				execvp("echo", tell + 2);
     			
     				print_exec_failed(buffer);
     				break;
