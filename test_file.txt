@@ -9,7 +9,6 @@ kill
 sleep 3
 cont
 kill 1980
-sleep 10&
 ps
 /bin/ls
 ps
