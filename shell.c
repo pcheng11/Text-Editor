@@ -245,6 +245,7 @@ int shell(int argc, char *argv[]) {
 			if(loc != NULL)
 			{
 				*loc = '\0';
+				token_array = strsplit(buffer, " \n", &num_tokens);
 			}
 			else
 				buffer[len-1]= '\0';
