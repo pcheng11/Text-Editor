@@ -51,7 +51,7 @@ void cleanup(int signal) {
 	
   int status;
   waitpid(child, &status, 0);
-  puts("cleen\n");
+  puts("clean\n");
 
 	
 }
