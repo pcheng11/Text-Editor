@@ -51,8 +51,9 @@ void cleanup(int signal) {
   
   int status;
   waitpid(child, &status, 0);
-  clean_up = 1;
+  
   puts("clean\n");
+  clean_up = 1;
 
 }
 
@@ -337,11 +338,12 @@ int shell(int argc, char *argv[]) {
    				} 
   				else 
   				{ 
+  				
+
+  				print_command_executed(child);
   					printf("%d\n",clean_up );
 				if(clean_up == 1)
 					puts("YP");
-
-  				print_command_executed(child);
   				
 					//exit(1);
    				}
