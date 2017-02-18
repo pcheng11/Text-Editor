@@ -523,6 +523,9 @@ int shell(int argc, char *argv[]) {
 				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
+				printf("%zu", vector_size(pid_info));
+				printf("%zu", vector_size(command_info));
+				printf("%zu", vector_size(status_info));
 				
 			
 				return 0;
@@ -692,7 +695,7 @@ int shell(int argc, char *argv[]) {
 		vector_clear(pid_info);
 		vector_clear(command_info);
 		vector_clear(status_info);
-		printf("%zu", vector_size(pid_info));
+	//	
    		exit(0);
 	}
 
