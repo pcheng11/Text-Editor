@@ -68,8 +68,8 @@ int shell(int argc, char *argv[]) {
 
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
-		//int temp = 0;
-		while(exit_ == 0)
+		int temp = 0;
+		while(temp == 0)
 	  {
 		pid_t main_pro = getpid();
 		//get current directory
@@ -106,7 +106,7 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "exit") == 0 || buffer == NULL )
 		{
 			//signal(SIGINT, intHandler);
-			exit_ = 1;
+			temp = 1;
 		}
 		//kill
 		else if(strcmp(buffer, "kill\n") == 0)
