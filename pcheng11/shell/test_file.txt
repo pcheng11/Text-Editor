@@ -8,6 +8,7 @@ cd home
 kill
 cont
 kill 1980
+opo
 /bin/ls
 ps
 exit
