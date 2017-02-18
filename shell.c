@@ -178,6 +178,7 @@ int shell(int argc, char *argv[]) {
 				vector_erase(status_info,remember);
 				vector_erase(command_info,remember);
 			}
+			
 		}
 
 		//stop
@@ -213,6 +214,7 @@ int shell(int argc, char *argv[]) {
 				vector_set(status_info, remember, STATUS_STOPPED);
 				print_stopped_process(*(int*)vector_get(pid_info, remember), vector_get(command_info, remember));
 			}
+
 		}
 		//cont
 		else if(strcmp(buffer, "cont\n") == 0)
@@ -360,6 +362,7 @@ int shell(int argc, char *argv[]) {
    				}
    			}
 		}
+		free(token_array);
 
 
 	 }
@@ -697,6 +700,7 @@ free(temp_3);
 		
 
   	}
+  	free(token_array);
   }
   		
   				free(buffer);
@@ -714,11 +718,14 @@ free(temp_3);
 				vector_clear(status_info);
    				exit(0);
 		}
+
 		//	exit(0);
 		
 	}
 
-
+	vector_clear(pid_info);
+				vector_clear(command_info);
+				vector_clear(status_info);
 return 0;
  
 }
