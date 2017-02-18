@@ -161,7 +161,7 @@ int shell(int argc, char *argv[]) {
 		}
 		else if(strcmp(token_array[0], "stop") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 			//printf("%d", i);
@@ -193,9 +193,9 @@ int shell(int argc, char *argv[]) {
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "cont") == 0)
+		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 			//printf("%d", i);
