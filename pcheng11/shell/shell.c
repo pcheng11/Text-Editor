@@ -660,7 +660,10 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 		}
-
+		else
+		{
+			print_invalid_command(buffer);
+		}
 
   	}
   		
