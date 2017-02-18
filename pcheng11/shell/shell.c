@@ -634,8 +634,8 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-  					printf("%s", buffer);
-    				execvp(buffer, &buffer);
+  					
+    				execvp(token_array[0], token_array);
     			
     				print_exec_failed(buffer);
     				break;
