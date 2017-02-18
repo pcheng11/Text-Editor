@@ -51,7 +51,7 @@ void cleanup(int signal) {
 	
   int status;
   waitpid(child, &status, 0);
-  puts("cleen");
+  puts("cleen\n");
 
 	
 }
@@ -313,9 +313,7 @@ int shell(int argc, char *argv[]) {
 				buffer[len-1]= '\0';
 				signal(SIGCHLD, cleanup);
 				printf("%d\n",clean_up );
-				if(clean_up == 1)
-				{
-					for(size_t j = 1; j < vector_size(pid_info); j++)
+				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
 					vector_erase(pid_info, j);
 					vector_erase(status_info, j);
@@ -323,7 +321,7 @@ int shell(int argc, char *argv[]) {
 				
 				}
 				
-				}
+	
 
 			 	child = fork();
 			 		process b;
@@ -359,8 +357,7 @@ int shell(int argc, char *argv[]) {
 				
 				//signal
 				signal(SIGCHLD, cleanup);
-				if(clean_up == 1)
-				{
+				
 					for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
 					vector_erase(pid_info, j);
@@ -369,7 +366,7 @@ int shell(int argc, char *argv[]) {
 				
 				}
 				
-				}
+				
 
 			 	 child = fork();
 			 		process b;
