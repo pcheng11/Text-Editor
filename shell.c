@@ -52,7 +52,7 @@ void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
   
-  puts("clean\n");
+  printf("clean\n %d", child);
   clean_up = 1;
 
 }
