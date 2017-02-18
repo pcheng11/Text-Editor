@@ -295,7 +295,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				printf("%s\n", buffer);
-    				execlp(buffer, &temp_dir, (char*)NULL);
+    				execlp(buffer, temp_dir, (char*)NULL);
     				print_exec_failed(buffer);
     				break;
    				} 
