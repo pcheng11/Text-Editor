@@ -72,7 +72,7 @@ int shell(int argc, char *argv[]) {
 			a.command = argv[0];
 			int *temp_1 = malloc(sizeof(a.pid));
 			*temp_1 = (int)main_pro;
-
+		
 			
 			//稍后需要判断
 			a.status = STATUS_RUNNING;
@@ -98,7 +98,10 @@ int shell(int argc, char *argv[]) {
 		size_t size = 0;
 		size_t cd = getline(&buffer, &size, stdin);
 		size_t len = strlen(buffer);
-		char* tell = strtok(buffer, " ");
+	
+		char **token_array;
+		size_t num_tokens;
+		token_array = strsplit(buffer, " \n", &num_tokens);
 		//see what is the command
 		//ps
 		
@@ -122,9 +125,9 @@ int shell(int argc, char *argv[]) {
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "kill") == 0)
+		else if(strcmp(token_array[0], "kill") == 0 && num_tokens == 2)
 		{
-			char* a = strdup(tell + 5);
+			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
 		//	printf("%d", i);
@@ -156,7 +159,7 @@ int shell(int argc, char *argv[]) {
 			buffer[4] = '\0';
 			print_invalid_command(buffer);
 		}
-		else if(strcmp(tell, "stop") == 0)
+		else if(strcmp(token_array[0], "stop") == 0 && num_tokens == 2)
 		{
 			char* a = strdup(tell + 5);
 			int exist = 0;
@@ -223,9 +226,9 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(buffer, "cd\n") == 0)
 			print_no_directory("");
 		
-		else if(strcmp(tell, "cd") == 0)
+		else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 		{
-			char *temp_dir = strdup(buffer + 3);
+			char *temp_dir = token_array[1];
 				size_t a = strlen(temp_dir);
 			temp_dir[a-1] = '\0';
 			//printf("%s", temp_dir);
@@ -320,27 +323,15 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 		}
-		else if(strcmp(tell, "echo") == 0)
+	else if(strcmp(token_array[0], "echo") == 0 )
 		{
-			
-
-			char *temp_dir = strdup(buffer + 5);
-				size_t a = strlen(temp_dir);
-			temp_dir[a-1] = '\0';
-			buffer[4] = ' ';
-			buffer[5] = '\0';
-			buffer = realloc(buffer, strlen(buffer) + strlen(temp_dir));
-			buffer = strcat(buffer, temp_dir);
-			//printf("%s", buffer);
-
-			// dir does not exist
+		
 			pid_t child = fork();
 				if (child == -1) 
   				print_fork_failed();
   				if (child == 0) 
-  				{ /* I have a child! */
-    				//printf("%s\n", buffer);
-    				execvp("echo", "n");
+  				{ 
+    				execvp(token_array[0], token_array);
     				print_exec_failed(buffer);
     				break;
    				} 
