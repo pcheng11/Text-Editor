@@ -45,6 +45,7 @@ void intHandler(int r) {
     if (r == SIGINT) 
        exit_ = 0;
    kill(child, SIGINT);
+   printf("%d", child);
    fflush(stdout);
 }
 
