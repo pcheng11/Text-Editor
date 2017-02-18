@@ -6,7 +6,7 @@ echo finished
 echo
 cd home
 kill
-sleep 3
+sleep 3&
 cont
 kill 1980
 ps
