@@ -276,7 +276,7 @@ int shell(int argc, char *argv[]) {
 					token_array = strsplit(buffer, " \n", &num_tokens);
 					buffer[len-1]= '\0';
 					signal(SIGCHLD, cleanup);
-					printf("%d\n", clean);
+				
 				 	child_b = fork();
 			 		
 			 		
@@ -290,7 +290,7 @@ int shell(int argc, char *argv[]) {
    					} 
   					else 
   					{ 
-  						process b;
+  					process b;
 					b.command = buffer;
 					int *temp_3 = malloc(sizeof(b.pid));
 					*temp_3 = (int)child;
