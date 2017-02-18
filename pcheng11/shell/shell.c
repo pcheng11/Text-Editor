@@ -97,7 +97,7 @@ int shell(int argc, char *argv[]) {
 		char *buffer = NULL;
 		size_t size = 0;
 		size_t cd = getline(&buffer, &size, stdin);
-	//size_t len = strlen(buffer);
+	size_t len = strlen(buffer);
 	
 		char **token_array;
 		size_t num_tokens;
@@ -244,6 +244,7 @@ int shell(int argc, char *argv[]) {
 
 			 	pid_t child = fork();
 			 		process b;
+			 		buffer[len-1]= '\0';
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(b.pid));
 				*temp_3 = (int)child;
