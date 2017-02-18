@@ -39,6 +39,7 @@ void *string_default_constructor(void) {
 
 static int exit_ = 0;
 static int clean = 0;
+static pid_t child;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -46,7 +47,7 @@ void intHandler(int r) {
    kill(child, SIGINT);
    fflush(stdout);
 }
-static pid_t child;
+
 
 void cleanup(int signal) {
   
