@@ -53,6 +53,7 @@ void cleanup(int signal) {
   waitpid(child, &status, 0);
   
   printf("clean %d", child);
+   fflush(stdout);
   clean_up = 1;
 
 }
