@@ -252,9 +252,8 @@ int shell(int argc, char *argv[]) {
    		  		char *buffer = NULL;
     			size_t length = 0;
     			
-			pid_t main_pro = getpid();
-//stock process
 			
+    		
     	while (getline(&buffer, &length, file) != -1) 
     {
 
