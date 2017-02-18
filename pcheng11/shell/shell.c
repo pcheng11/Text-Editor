@@ -293,7 +293,7 @@ int shell(int argc, char *argv[]) {
   					process b;
 					b.command = buffer;
 					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
+					*temp_3 = (int)child_b;
 					b.status = STATUS_RUNNING;
 					vector_push_back(pid_info, temp_3);
 					vector_push_back(status_info, b.status);
@@ -313,7 +313,7 @@ int shell(int argc, char *argv[]) {
 					 buffer[len-1]= '\0';
 					b.command = buffer;
 					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
+					*temp_3 = (int)child_b;
 					b.status = STATUS_RUNNING;
 					vector_push_back(pid_info, temp_3);
 					vector_push_back(status_info, b.status);
