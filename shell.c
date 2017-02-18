@@ -530,8 +530,19 @@ int shell(int argc, char *argv[]) {
 		//exit
 		else if(strcmp(buffer, "exit") == 0 )
 		{
-			//signal(SIGINT, intHandler);
-			exit_ = 1;
+				for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					int child = *(int*)vector_get(pid_info,j);
+
+					kill(child, SIGINT);
+					printf("%d", child);
+				
+				}
+				
+			
+			exit_= 1;
+
+			
 		}
 		else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 		{
@@ -683,6 +694,15 @@ int shell(int argc, char *argv[]) {
   		
   				free(buffer);
    				fclose(file);
+   				for(size_t j = 1; j < vector_size(pid_info); j++)
+				{
+					int child = *(int*)vector_get(pid_info,j);
+
+					kill(child, SIGINT);
+					printf("%d", child);
+				
+				}
+				
    				exit(0);
 		}
 		//	exit(0);
