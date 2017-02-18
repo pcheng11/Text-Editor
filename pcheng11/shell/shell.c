@@ -60,8 +60,7 @@ int shell(int argc, char *argv[]) {
 
 	
 
-	while(exit_ == 0)
-  {
+
 
   	//stdin input main process: no need to create another process
   	if(argc == 1)
@@ -619,7 +618,7 @@ int shell(int argc, char *argv[]) {
 		
 	}
 
-}
+
 return 0;
  
 }
