@@ -394,7 +394,7 @@ int shell(int argc, char *argv[]) {
   		}
   		free(token_array);
 	
-
+  	free(buffer);
 
 	 }
 		
@@ -741,13 +741,14 @@ int shell(int argc, char *argv[]) {
   		free(token_array[i]);
   		}
   		free(token_array);
+  		free(buffer);
 	
 
 
 	 }
   	
   		
-  				free(buffer);
+  				
    				fclose(file);
    				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
@@ -765,10 +766,10 @@ int shell(int argc, char *argv[]) {
 
 		//	exit(0);
 		
-	
+		
 
 			
-			vector_clear(pid_info);
+				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
 return 0;
