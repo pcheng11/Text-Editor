@@ -320,6 +320,48 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 		}
+		else if(strcmp(tell, "echo") == 0)
+		{
+			char *temp_dir = strdup(buffer + 5);
+				size_t a = strlen(temp_dir);
+			temp_dir[a-1] = '\0';
+			//printf("%s", temp_dir);
+
+			// dir does not exist
+			pid_t child = fork();
+				if (child == -1) 
+  				print_fork_failed();
+  				if (child == 0) 
+  				{ /* I have a child! */
+    				printf("%s\n", buffer);
+    				execvp(buffer, &buffer);
+    				print_exec_failed(buffer);
+    				break;
+   				} 
+  				else 
+  				{ 
+  				print_command_executed(child);
+			 	//puts("L");
+			 	/*process b;
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
+		*/
+  				int status;
+    			int return_value = waitpid(child , &status ,0);
+   				if(return_value == -1 || !WIFEXITED(status))
+   					print_wait_failed();
+					//exit(1);
+   				}
+
+			
+		}
+		//externel command
+		//ls
 
 	 }
 		
