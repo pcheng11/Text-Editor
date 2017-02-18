@@ -38,7 +38,8 @@ void *string_default_constructor(void) {
 int exit_ = 0;
 
 void intHandler(int r) {
-   exit_ = 0;
+    if (r == SIGINT) 
+       exit_ = 0;
 }
 
 
