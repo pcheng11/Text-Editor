@@ -48,7 +48,7 @@ void intHandler(int r) {
 pid_t child;
 
 void cleanup(int signal) {
-	
+	clean_up = 1;
   int status;
   waitpid(child, &status, 0);
   puts("clean\n");
@@ -343,7 +343,7 @@ int shell(int argc, char *argv[]) {
   				else 
   				{ 
   				print_command_executed(child);
-  				//if(clean_up == 1)
+  				if(clean_up == 1)
   				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
 					vector_erase(pid_info, j);
@@ -361,13 +361,7 @@ int shell(int argc, char *argv[]) {
 				//signal
 				signal(SIGCHLD, cleanup);
 				
-					for(size_t j = 1; j < vector_size(pid_info); j++)
-				{
-					vector_erase(pid_info, j);
-					vector_erase(status_info, j);
-					vector_erase(command_info, j);
 				
-				}
 				
 				
 
@@ -681,17 +675,8 @@ int shell(int argc, char *argv[]) {
 				buffer[len-1]= '\0';
 
 				signal(SIGCHLD, cleanup);
-				if(clean_up == 1)
-				{
-					for(size_t j = 1; j < vector_size(pid_info); j++)
-				{
-					vector_erase(pid_info, j);
-					vector_erase(status_info, j);
-					vector_erase(command_info, j);
+			
 				
-				}
-				
-				}
 
 			 	 child = fork();
 			 		process b;
@@ -725,17 +710,9 @@ int shell(int argc, char *argv[]) {
 			{
 				signal(SIGCHLD, cleanup);
 				//clean up
-				if(clean_up == 1)
-				{
-					for(size_t j = 1; j < vector_size(pid_info); j++)
-				{
-					vector_erase(pid_info, j);
-					vector_erase(status_info, j);
-					vector_erase(command_info, j);
 				
-				}
 				
-				}
+				
 			 	 child = fork();
 			 		process b;
 			 	buffer[len-1]= '\0';
