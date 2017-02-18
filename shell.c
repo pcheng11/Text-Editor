@@ -465,6 +465,7 @@ int shell(int argc, char *argv[]) {
     				execvp(buffer, &buffer);
     			
     				print_exec_failed(buffer);
+    				break;
    				} 
   				else 
   				{ 
