@@ -340,7 +340,7 @@ int shell(int argc, char *argv[]) {
   				if (child == 0) 
   				{ /* I have a child! */
     				//printf("%s\n", buffer);
-    				execvp(buffer, &buffer);
+    				execvp("echo", &buffer);
     				print_exec_failed(buffer);
     				break;
    				} 
