@@ -245,7 +245,7 @@ int shell(int argc, char *argv[]) {
 		}
 		//externel command
 		//ls
-		else if(strcmp(buffer, "/bin/ls\n") == 0)
+		else if(strcmp(buffer, "/bin/ls\n") == 0 || strcmp(buffer, "ls\n") == 0)
 		{
 				//puts("L");
 			 	pid_t child = fork();
@@ -582,7 +582,7 @@ int shell(int argc, char *argv[]) {
 
 		//externel command
 		//ls
-		else if(strcmp(buffer, "/bin/ls") == 0)
+		else if(strcmp(buffer, "/bin/ls") == 0 || strcmp(buffer, "ls") == 0)
 		{
 				//puts("L");
 			 	pid_t child = fork();
@@ -592,7 +592,7 @@ int shell(int argc, char *argv[]) {
   					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
-    				execl("/bin/ls", "ls", (char *) NULL);
+    				execvp(token_array[0], token_array);
     			
     				print_exec_failed(buffer);
     				break;
