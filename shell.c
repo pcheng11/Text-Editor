@@ -279,6 +279,7 @@ int shell(int argc, char *argv[]) {
 					token_array = strsplit(buffer, " \n", &num_tokens);
 					buffer[len-1]= '\0';
 					signal(SIGCHLD, cleanup);
+					printf("%d\n", clean);
 				 	child_b = fork();
 			 		
 			 		process b;
@@ -302,7 +303,7 @@ int shell(int argc, char *argv[]) {
   					else 
   					{ 
   					print_command_executed(child_b);
-  					printf("%d\n", clean);
+  					
   	   				}
 				}
 
