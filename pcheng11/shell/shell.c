@@ -330,7 +330,8 @@ int shell(int argc, char *argv[]) {
 
   				if (child == -1) 
   					print_fork_failed();
-  				if (child == 0) 
+  				if
+  				 (child == 0) 
   				{ 
     				execvp(token_array[0], token_array);
     			
