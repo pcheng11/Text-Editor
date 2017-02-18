@@ -420,8 +420,7 @@ int shell(int argc, char *argv[]) {
       		
   			}
 //count line numbers
-			else
-  	{
+	
    		  		char *buffer = NULL;
     			size_t length = 0;
     			
@@ -746,7 +745,7 @@ int shell(int argc, char *argv[]) {
 
 
 	 }
-  	}
+  	
   		
   				free(buffer);
    				fclose(file);
@@ -766,7 +765,7 @@ int shell(int argc, char *argv[]) {
 
 		//	exit(0);
 		
-	}
+	
 
 			
 			vector_clear(pid_info);
