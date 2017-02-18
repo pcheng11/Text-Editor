@@ -229,7 +229,7 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 		{
 			char *temp_dir = token_array[1];
-				size_t a = strlen(temp_dir);
+				//size_t a = strlen(temp_dir);
 			//temp_dir[a-1] = '\0';
 			//printf("%s", temp_dir);
 
