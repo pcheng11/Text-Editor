@@ -290,7 +290,7 @@ int shell(int argc, char *argv[]) {
   					else 
   					{ 
   					print_command_executed(child);
-  					printf("%d", clean);
+  					printf("%d\n", clean);
   	   				}
 				}
 
