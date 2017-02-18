@@ -430,6 +430,7 @@ int shell(int argc, char *argv[]) {
 				puts("L");
 			 	pid_t child = fork();
 			 	print_command_executed(child);
+			 	puts("L");
 			 	process b;
 				b.command = buffer;
 				int *temp_3 = malloc(sizeof(b.pid));
