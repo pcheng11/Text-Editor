@@ -274,7 +274,7 @@ int shell(int argc, char *argv[]) {
 
    				int i = child;
 
-				int remember;
+				int remember = 0;
 				for(size_t j = 0; j < vector_size(pid_info); j++)
 				{
 				if(*(int*)vector_get(pid_info,j) == i)
