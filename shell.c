@@ -575,7 +575,7 @@ int shell(int argc, char *argv[]) {
 					}
 					else
 						chdir(b);
-					free(b);
+						free(b);
 				}
 
 				else
