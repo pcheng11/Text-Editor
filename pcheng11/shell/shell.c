@@ -34,10 +34,7 @@ void *string_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(char));
 }
-vector *pid_info = int_vector_create();
-	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	
+
 int exit_ = 0;
 
 void intHandler(int r) {
@@ -46,26 +43,12 @@ void intHandler(int r) {
    fflush(stdout);
 }
 pid_t child;
+
 void cleanup(int signal) {
   int status;
   waitpid(child, &status, 0);
-    int i = child;
 
-				int remember = 0;
-				for(size_t j = 0; j < vector_size(pid_info); j++)
-				{
-				if(*(int*)vector_get(pid_info,j) == i)
-				{
-					remember = j;
-					break;
-				}
-
-				}
-			
-   				vector_erase(pid_info, remember );
-				vector_erase(status_info, remember);
-				vector_erase(command_info, remember);
-					//exit(1);
+	
 }
 
 int shell(int argc, char *argv[]) {
@@ -79,6 +62,9 @@ int shell(int argc, char *argv[]) {
 	}
 	
 // create 3 vectors to keep track of process info
+	vector *pid_info = int_vector_create();
+	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 	
 
 	process a;
