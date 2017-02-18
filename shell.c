@@ -129,7 +129,7 @@ int shell(int argc, char *argv[]) {
 				
 				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
-					int child = *(int*)vector_get(pid_info,j)
+					int child = *(int*)vector_get(pid_info,j);
 
 					kill(child, SIGINT);
 					printf("%d", child);
