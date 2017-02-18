@@ -60,14 +60,7 @@ int shell(int argc, char *argv[]) {
 	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
 	
 
-	
-
-
-
-  	//stdin input main process: no need to create another process
-  	if(argc == 1)
-	{
-				process a;
+	process a;
 			pid_t main_pro = getpid();
 			a.command = argv[0];
 			int *temp_1 = malloc(sizeof(a.pid));
@@ -79,6 +72,13 @@ int shell(int argc, char *argv[]) {
 			vector_push_back(pid_info, temp_1);
 			vector_push_back(status_info, a.status);
 			vector_push_back(command_info, a.command);
+
+
+
+  	//stdin input main process: no need to create another process
+  	if(argc == 1)
+	{
+				
 		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
 
 		signal (SIGINT,intHandler);
