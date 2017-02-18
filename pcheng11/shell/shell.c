@@ -427,6 +427,7 @@ int shell(int argc, char *argv[]) {
 		//ls
 		else if(strcmp(buffer, "/bin/ls") == 0)
 		{
+				puts("L");
 			 	pid_t child = fork();
 			 	print_command_executed(child);
 			 	process b;
@@ -439,7 +440,8 @@ int shell(int argc, char *argv[]) {
 				vector_push_back(command_info, b.command);
 		
 
-  				if (child == -1) print_fork_failed();
+  				if (child == -1) 
+  					print_fork_failed();
   				if (child == 0) 
   				{ /* I have a child! */
     				execl("/bin/ls", "ls", (char *) NULL);
@@ -448,7 +450,7 @@ int shell(int argc, char *argv[]) {
    				} 
   				else 
   				{ 
-  					int status;
+  				int status;
     			int return_value = waitpid(child , &status ,0);
    				if(return_value == -1 || !WIFEXITED(status))
    					print_wait_failed();
