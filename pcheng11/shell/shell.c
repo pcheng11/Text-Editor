@@ -34,15 +34,11 @@ void *string_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(char));
 }
-static vector *pid_info = int_vector_create();
-	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
-
-   
 
 static int exit_ = 0;
 static int clean = 0;
 static pid_t child;
+static pid_t child_b;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -56,7 +52,8 @@ void intHandler(int r) {
 void cleanup(int signal) {
   
   int status;
-  waitpid(child, &status, 0);
+  waitpid(child_b, &status, 0);
+  printf("clean");
   clean = 1;
  
    fflush(stdout);
@@ -75,7 +72,12 @@ int shell(int argc, char *argv[]) {
 	}
 	
 // create 3 vectors to keep track of process info
-	
+	vector *pid_info = int_vector_create();
+	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
+
+   
+
 	
 
 	process a;
@@ -271,7 +273,7 @@ int shell(int argc, char *argv[]) {
 					token_array = strsplit(buffer, " \n", &num_tokens);
 					buffer[len-1]= '\0';
 					signal(SIGCHLD, cleanup);
-				 	child = fork();
+				 	child_b = fork();
 			 		
 			 		process b;
 					b.command = buffer;
@@ -283,9 +285,9 @@ int shell(int argc, char *argv[]) {
 					vector_push_back(command_info, b.command);
 					free(temp_3);
 
-					if (child == -1) 
+					if (child_b == -1) 
   					print_fork_failed();
-  					if(child == 0) 
+  					if(child_b == 0) 
   					{ 
  		   				execvp(token_array[0], token_array);
     					print_exec_failed(buffer);
@@ -293,7 +295,7 @@ int shell(int argc, char *argv[]) {
    					} 
   					else 
   					{ 
-  					print_command_executed(child);
+  					print_command_executed(child_b);
   				//	printf("%d\n", clean);
   	   				}
 				}
@@ -326,7 +328,7 @@ int shell(int argc, char *argv[]) {
   						print_command_executed(child);
 		
   						int status;
-    					int return_value = waitpid(child , &status ,0);
+    					int return_value = waitpid(child, &status ,0);
    						if(return_value == -1 || !WIFEXITED(status))
    						print_wait_failed();
 
@@ -611,7 +613,7 @@ int shell(int argc, char *argv[]) {
 			
 				
 
-			 		child = fork();
+			 		child_b = fork();
 			 		process b;
 			 		//buffer[len-1]= '\0';
 					b.command = buffer;
@@ -623,9 +625,9 @@ int shell(int argc, char *argv[]) {
 					vector_push_back(command_info, b.command);
 			
 					free(temp_3);
-  					if (child == -1) 
+  					if (child_b == -1) 
   						print_fork_failed();
- 	 				if (child == 0) 
+ 	 				if (child_b == 0) 
   					{ 
     					execvp(token_array[0], token_array);
     				
@@ -634,7 +636,7 @@ int shell(int argc, char *argv[]) {
   	 				} 
   					else 
   					{ 
-  					print_command_executed(child);
+  					print_command_executed(child_b);
 					//exit(1);
    					}
 				}
