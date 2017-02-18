@@ -279,16 +279,7 @@ int shell(int argc, char *argv[]) {
 					printf("%d\n", clean);
 				 	child_b = fork();
 			 		
-			 		process b;
-					b.command = buffer;
-					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
-					b.status = STATUS_RUNNING;
-					vector_push_back(pid_info, temp_3);
-					vector_push_back(status_info, b.status);
-					vector_push_back(command_info, b.command);
-					free(temp_3);
-
+			 		
 					if (child_b == -1) 
   					print_fork_failed();
   					if(child_b == 0) 
@@ -299,6 +290,16 @@ int shell(int argc, char *argv[]) {
    					} 
   					else 
   					{ 
+  						process b;
+					b.command = buffer;
+					int *temp_3 = malloc(sizeof(b.pid));
+					*temp_3 = (int)child;
+					b.status = STATUS_RUNNING;
+					vector_push_back(pid_info, temp_3);
+					vector_push_back(status_info, b.status);
+					vector_push_back(command_info, b.command);
+					free(temp_3);
+
   					print_command_executed(child_b);
   					
   	   				}
