@@ -1,6 +1,7 @@
 cd mini_valgrind
 cd ..
 cd mini_valgrind
+echo ab
 cd home
 kill
 cont
