@@ -67,7 +67,7 @@ int shell(int argc, char *argv[]) {
 			*temp_1 = (int)main_pro;
 		
 			
-			//稍后需要判断
+		
 			a.status = STATUS_RUNNING;
 			vector_push_back(pid_info, temp_1);
 			vector_push_back(status_info, a.status);
@@ -79,7 +79,7 @@ int shell(int argc, char *argv[]) {
   	if(argc == 1)
 	{
 				
-		//vector *proc = vector_create((void*)process_copy_constructor, (void*)process_destructor,(void*) process_default_constructor);
+
 
 		signal (SIGINT,intHandler);
 		while(exit_ == 0)
@@ -115,7 +115,7 @@ int shell(int argc, char *argv[]) {
 		//exit
 		else if(strcmp(buffer, "exit\n") == 0 || (int)cd == -1 )
 		{
-			//signal(SIGINT, intHandler);
+			
 			exit_= 1;
 		}
 
@@ -164,7 +164,7 @@ int shell(int argc, char *argv[]) {
 			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
-			//printf("%d", i);
+
 			int remember;
 			for(size_t j = 0; j < vector_size(pid_info); j++)
 			{
@@ -198,7 +198,6 @@ int shell(int argc, char *argv[]) {
 			char* a = token_array[1];
 			int exist = 0;
 			int i = atoi(a);
-			//printf("%d", i);
 			int remember;
 			for(size_t j = 0; j < vector_size(pid_info); j++)
 			{
@@ -229,11 +228,6 @@ int shell(int argc, char *argv[]) {
 		else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 		{
 			char *temp_dir = token_array[1];
-				//size_t a = strlen(temp_dir);
-			//temp_dir[a-1] = '\0';
-			//printf("%s", temp_dir);
-
-			// dir does not exist
 
 			if(opendir(temp_dir)== NULL)
 			{
@@ -247,7 +241,16 @@ int shell(int argc, char *argv[]) {
 		else 
 		{
 				//puts("L");
+
 			 	pid_t child = fork();
+			 		process b;
+				b.command = buffer;
+				int *temp_3 = malloc(sizeof(b.pid));
+				*temp_3 = (int)child;
+				b.status = STATUS_RUNNING;
+				vector_push_back(pid_info, temp_3);
+				vector_push_back(status_info, b.status);
+				vector_push_back(command_info, b.command);
 		
 
   				if (child == -1) 
