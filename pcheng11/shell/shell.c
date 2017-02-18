@@ -40,9 +40,6 @@ static int clean = 0;
 static pid_t child;
 static pid_t child_b;
 
-vector *pid_info;
-vector *status_info;
-vector *command_info;
 
 void intHandler(int r) {
     if (r == SIGINT) 
@@ -78,9 +75,9 @@ int shell(int argc, char *argv[]) {
 	}
 	
 // create 3 vectors to keep track of process info
-	pid_info = int_vector_create();
-	status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
+	vector* pid_info = int_vector_create();
+	vector* status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector* command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
 
    
 
@@ -133,9 +130,9 @@ int shell(int argc, char *argv[]) {
 			{
 				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
-					int child = *(int*)vector_get(pid_info,j);
-					kill(child, SIGINT);
-					printf("%d", child);
+					int r = *(int*)vector_get(pid_info,j);
+					kill(r, SIGINT);
+					printf("%d", r);
 				}
 				vector_clear(pid_info);
 				vector_clear(command_info);
