@@ -8,3 +8,4 @@ cont
 kill 1980
 /bin/ls
 ps
+exit
