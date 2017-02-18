@@ -49,7 +49,7 @@ void intHandler(int r) {
        exit_ = 0;
    kill(child, SIGINT);
    printf("%d", child);
-   vector_erase(pid_info, 0);
+  // vector_erase(pid_info, 0);
    fflush(stdout);
 }
 
