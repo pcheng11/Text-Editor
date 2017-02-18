@@ -40,6 +40,7 @@ int exit_ = 0;
 void intHandler(int r) {
     if (r == SIGINT) 
        exit_ = 0;
+   fflush(stdout);
 }
 
 
