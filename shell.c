@@ -274,7 +274,9 @@ int shell(int argc, char *argv[]) {
 					//exit(1);
    				}
 			}
+
 			else
+			{
 				buffer[len-1]= '\0';
 			 	pid_t child = fork();
 			 		process b;
@@ -324,6 +326,7 @@ int shell(int argc, char *argv[]) {
 				vector_erase(command_info, remember);
 					//exit(1);
    				}
+   			}
 		}
 		//externel command
 		//ls
