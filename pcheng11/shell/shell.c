@@ -34,6 +34,9 @@ void *string_default_constructor(void) {
   // A single null byte
   return calloc(1, sizeof(char));
 }
+static vector *pid_info = int_vector_create();
+	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
+	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
 
    
 
@@ -72,9 +75,7 @@ int shell(int argc, char *argv[]) {
 	}
 	
 // create 3 vectors to keep track of process info
-	vector *pid_info = int_vector_create();
-	vector *status_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor);
-	vector *command_info = vector_create(string_copy_constructor, string_destructor, string_default_constructor); 
+	
 	
 
 	process a;
