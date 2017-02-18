@@ -232,6 +232,19 @@ int shell(int argc, char *argv[]) {
 	else
 	{
 
+//stock process
+			process a;
+			a.command = argv;
+			int *temp_1 = malloc(sizeof(a.pid));
+			*temp_1 = (int)main_pro;
+
+			
+			//稍后需要判断
+			a.status = STATUS_RUNNING;
+			vector_push_back(pid_info, temp_1);
+			vector_push_back(status_info, a.status);
+			vector_push_back(command_info, a.command);
+		
 		int temp = 0;
 		while(temp!=1)
 	{	
@@ -267,18 +280,6 @@ int shell(int argc, char *argv[]) {
 		r_temp[len-1] = '\0';
 		print_command(r_temp);
 		free(r_temp);
-		//stock process
-			process a;
-			a.command = argv[0];
-			int *temp_1 = malloc(sizeof(a.pid));
-			*temp_1 = (int)main_pro;
-
-			
-			//稍后需要判断
-			a.status = STATUS_RUNNING;
-			vector_push_back(pid_info, temp_1);
-			vector_push_back(status_info, a.status);
-			vector_push_back(command_info, a.command);
 		
 		//get stdin
 		if(buffer[len-1] == '\n')
