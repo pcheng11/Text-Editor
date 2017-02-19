@@ -112,11 +112,17 @@ int shell(int argc, char *argv[]) {
 			size_t cd = getline(&buffer, &size, stdin);
 			if((int)cd == -1)
 			{
+				for(size_t j = 0; j < vector_size(pid_info); j++)
+				{
+					int r = *(int*)vector_get(pid_info,j);
+					kill(r, SIGINT);
+					//printf("%d", r);
+				}
 				vector_destroy(pid_info);
 				vector_destroy(command_info);
 				vector_destroy(status_info);
 				free(buffer);
-				return 0;
+				return EXIT_SUCCESS;
 			}
 		while(*buffer == '\n')
 			{
