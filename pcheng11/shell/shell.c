@@ -439,7 +439,7 @@ int shell(int argc, char *argv[]) {
 				char *directory = getcwd(NULL, 0);
 				print_prompt(directory, main_pro);
 				free(directory);
-				cd = getline(&buffer, &length, buffer);
+				getline(&buffer, &length, file);
 			}
 
 			int len = strlen(buffer);
