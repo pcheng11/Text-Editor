@@ -317,6 +317,22 @@ int shell(int argc, char *argv[]) {
   					{ 
  		   				execvp(token_array[0], token_array);
     					print_exec_failed(buffer);
+
+
+    					int remember = 0;
+						for(size_t j = 0; j < vector_size(pid_info); j++)
+						{
+							if(*(int*)vector_get(pid_info,j) == child_b)
+							{
+								remember = j;
+								break;
+							}
+
+						}
+			
+   						vector_erase(pid_info, remember );
+						vector_erase(status_info, remember);
+						vector_erase(command_info, remember);
     					break;
    		 				
    					} 
