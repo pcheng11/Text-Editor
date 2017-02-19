@@ -85,16 +85,17 @@ int shell(int argc, char *argv[]) {
 
 	process a;
 	pid_t main_pro = getpid();
-	a.command = argv[0];
-	int *temp_1 = malloc(sizeof(a.pid));
+	a.command = strdup(argv[0]);
+	int *temp_1 = malloc(sizeof(pid_t));
 	*temp_1 = (int)main_pro;
 		
-	a.status = STATUS_RUNNING;
+	a.status  = strdup(STATUS_RUNNING);
 	vector_push_back(pid_info, temp_1);
 	vector_push_back(status_info, a.status);
 	vector_push_back(command_info, a.command);
-
+	free(a.command);
 	free(temp_1);
+	free(a.status);
 
   	//stdin input main process: no need to create another process
   	if(argc == 1)
@@ -137,7 +138,12 @@ int shell(int argc, char *argv[]) {
 				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
-					
+				for(int i = 0; i<(int) num_tokens; i++)
+   				{
+  					free(token_array[i]);
+  				}
+  				free(token_array);
+				free(buffer);
 				return EXIT_SUCCESS;
 			}
 
@@ -248,20 +254,37 @@ int shell(int argc, char *argv[]) {
 			}
 
 		//cd
-			else if(strcmp(buffer, "cd\n") == 0)
-			{
+			else if(strcmp(buffer, "cd") == 0)
 				print_no_directory("");
-			}
 		
 			else if(strcmp(token_array[0], "cd") == 0 && num_tokens == 2)
 			{
-				char *temp_dir = token_array[1];
-				if(opendir(temp_dir)== NULL)
+				char* a = token_array[1];
+				if(*a == '/')
 				{
-					print_no_directory(temp_dir);
+					char * b = get_full_path(a);
+					if(opendir(b)== NULL)
+					{
+						print_no_directory(b);
+						free(b);
+					}
+					else
+					{
+						chdir(b);
+						free(b);
+					}
 				}
+
 				else
-					chdir(temp_dir);
+				{
+					if(opendir(a)== NULL)
+					{
+						print_no_directory(a);
+					}
+					else
+						chdir(a);
+				}
+
 			}
 
 			//externel command
@@ -273,8 +296,8 @@ int shell(int argc, char *argv[]) {
 				if(loc != NULL)
 				{
 					*loc = '\0';
-					token_array = strsplit(buffer, " \n", &num_tokens);
-					buffer[len-1]= '\0';
+				//	token_array = strsplit(buffer, " \n", &num_tokens);
+			//		buffer[len-1]= '\0';
 					signal(SIGCHLD, cleanup);
 					
 				 	child_b = fork();
@@ -291,15 +314,16 @@ int shell(int argc, char *argv[]) {
   					else 
   					{ 
   					process b;
-					b.command = buffer;
-					int *temp_3 = malloc(sizeof(b.pid));
+					b.command = strdup(buffer);
+					int *temp_3 = malloc(sizeof(pid_t));
 					*temp_3 = (int)child_b;
-					b.status = STATUS_RUNNING;
+					b.status = strdup(STATUS_RUNNING);
 					vector_push_back(pid_info, temp_3);
 					vector_push_back(status_info, b.status);
 					vector_push_back(command_info, b.command);
 					free(temp_3);
-
+					free(b.command);
+					free(b.status);
   					print_command_executed(child_b);
   					
   	   				}
@@ -308,18 +332,10 @@ int shell(int argc, char *argv[]) {
 				else
 				{
 					fflush(stdout);
-				 	 child = fork();
-				 		process b;
-					 buffer[len-1]= '\0';
-					b.command = buffer;
-					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
-					b.status = STATUS_RUNNING;
-					vector_push_back(pid_info, temp_3);
-					vector_push_back(status_info, b.status);
-					vector_push_back(command_info, b.command);
-					free(temp_3);
+					buffer[len-1]= '\0';
 
+				 	 child = fork();
+				 	
   					if (child == -1) 
   						print_fork_failed();
   					if (child == 0) 
@@ -331,6 +347,19 @@ int shell(int argc, char *argv[]) {
   	 				} 
   					else 
   					{ 
+
+  						process b;
+						b.command = strdup(buffer);
+						int *temp_3 = malloc(sizeof(pid_t));
+						*temp_3 = (int)child;
+						b.status = strdup(STATUS_RUNNING);
+						vector_push_back(pid_info, temp_3);
+						vector_push_back(status_info, b.status);
+						vector_push_back(command_info, b.command);
+						free(temp_3);
+						free(b.command);
+						free(b.status);
+
   						print_command_executed(child);
 		
   						int status;
@@ -536,10 +565,18 @@ int shell(int argc, char *argv[]) {
 				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
+				for(int i = 0; i<(int) num_tokens; i++)
+ 	  			{
+  					free(token_array[i]);
+  				}
+  				free(token_array);
+		
+  				free(buffer);
 			
 			
 				return 0;
 			}
+
 			else if(strcmp(token_array[0], "cont") == 0 && num_tokens == 2)
 			{
 				char* a = token_array[1];
@@ -582,10 +619,13 @@ int shell(int argc, char *argv[]) {
 					if(opendir(b)== NULL)
 					{
 						print_no_directory(b);
+						free(b);
 					}
 					else
+					{
 						chdir(b);
 						free(b);
+					}
 				}
 
 				else
@@ -609,25 +649,15 @@ int shell(int argc, char *argv[]) {
 				if(loc != NULL)
 				{
 					*loc = '\0';
-					token_array = strsplit(buffer, " \n", &num_tokens);
-					buffer[len-1]= '\0';
+					//token_array = strsplit(buffer, " \n", &num_tokens);
+				//	buffer[len-1]= '\0';
 
 					signal(SIGCHLD, cleanup);
 			
 				
 
 			 		child_b = fork();
-			 		process b;
-			 		//buffer[len-1]= '\0';
-					b.command = buffer;
-					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
-					b.status = STATUS_RUNNING;
-					vector_push_back(pid_info, temp_3);
-					vector_push_back(status_info, b.status);
-					vector_push_back(command_info, b.command);
-			
-					free(temp_3);
+			 		
   					if (child_b == -1) 
   						print_fork_failed();
  	 				if (child_b == 0) 
@@ -639,6 +669,17 @@ int shell(int argc, char *argv[]) {
   	 				} 
   					else 
   					{ 
+  					process b;
+					b.command = strdup(buffer);
+					int *temp_3 = malloc(sizeof(pid_t));
+					*temp_3 = (int)child_b;
+					b.status = strdup(STATUS_RUNNING);
+					vector_push_back(pid_info, temp_3);
+					vector_push_back(status_info, b.status);
+					vector_push_back(command_info, b.command);
+					free(temp_3);
+					free(b.command);
+					free(b.status);
   					print_command_executed(child_b);
 					//exit(1);
    					}
@@ -646,20 +687,13 @@ int shell(int argc, char *argv[]) {
 
 				else
 				{	
+					buffer[len-1]= '\0';
 					child = fork();
 			 		process b;
-				 	buffer[len-1]= '\0';
-					b.command = buffer;
-					int *temp_3 = malloc(sizeof(b.pid));
-					*temp_3 = (int)child;
-					b.status = STATUS_RUNNING;
-					vector_push_back(pid_info, temp_3);
-					vector_push_back(status_info, b.status);
-					vector_push_back(command_info, b.command);
-		
-					free(temp_3);
+				 	
   					if (child == -1) 
  	 					print_fork_failed();
+
   					if (child == 0) 
   					{ 
     					execvp(token_array[0], token_array);
@@ -669,6 +703,19 @@ int shell(int argc, char *argv[]) {
   	 				} 
   					else 
   					{ 
+
+  						process b;
+						b.command = strdup(buffer);
+						int *temp_3 = malloc(sizeof(pid_t));
+						*temp_3 = (int)child;
+						b.status = strdup(STATUS_RUNNING);
+						vector_push_back(pid_info, temp_3);
+						vector_push_back(status_info, b.status);
+						vector_push_back(command_info, b.command);
+						free(temp_3);
+						free(b.command);
+						free(b.status);
+  				
  	 					print_command_executed(child);
 		
   						int status;
@@ -712,7 +759,7 @@ int shell(int argc, char *argv[]) {
 		{
 			int child = *(int*)vector_get(pid_info,j);
 
-			kill(child, SIGINT);
+			kill(child, SIGTERM);
 			//printf("%d", child);
 				
 		}
