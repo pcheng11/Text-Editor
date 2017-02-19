@@ -627,6 +627,7 @@ int shell(int argc, char *argv[]) {
   				free(token_array);
 		
   				free(buffer);
+  				flose(file);
 			
 			
 				return 0;
