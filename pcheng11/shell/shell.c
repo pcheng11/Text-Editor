@@ -451,7 +451,8 @@ int shell(int argc, char *argv[]) {
   		if(file == NULL)
   		{ // can not open
   			print_script_file_error();
-      		free(file);
+  			fclose(file);
+      	//	free(file);
       		return 0;
       		
   		}
@@ -669,26 +670,34 @@ int shell(int argc, char *argv[]) {
 				if(*a == '/')
 				{
 					char * b = get_full_path(a);
-					if(opendir(b)== NULL)
+					DIR * re = opendir(b);
+					if(re == NULL)
 					{
 						print_no_directory(b);
 						free(b);
+						free(re);
+						
 					}
 					else
 					{
 						chdir(b);
 						free(b);
+						free(re);
 					}
 				}
 
 				else
 				{
-					if(opendir(a)== NULL)
+					DIR * re = opendir(a);
+					if(re== NULL)
 					{
 						print_no_directory(a);
 					}
 					else
+					{
 						chdir(a);
+						free(re);
+					}
 				}
 
 			}
