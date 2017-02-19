@@ -296,12 +296,16 @@ int shell(int argc, char *argv[]) {
 
 				else
 				{
-					if(opendir(a)== NULL)
+					DIR * re = opendir(a);
+					if(re== NULL)
 					{
 						print_no_directory(a);
 					}
 					else
+					{
 						chdir(a);
+						free(re);
+					}
 				}
 
 			}
