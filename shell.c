@@ -138,7 +138,7 @@ int shell(int argc, char *argv[]) {
 				vector_clear(command_info);
 				vector_clear(status_info);
 					
-				return 0;
+				return EXIT_SUCCESS;
 			}
 
 			//kill
@@ -536,10 +536,7 @@ int shell(int argc, char *argv[]) {
 				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
-				printf("%zu", vector_size(pid_info));
-				printf("%zu", vector_size(command_info));
-				printf("%zu", vector_size(status_info));
-				
+			
 			
 				return 0;
 			}
@@ -702,7 +699,7 @@ int shell(int argc, char *argv[]) {
 
   			for(int i = 0; i<(int) num_tokens; i++)
    			{
-   				puts("L");
+   				//puts("L");
   				free(token_array[i]);
   			}
   			free(token_array);
@@ -716,7 +713,7 @@ int shell(int argc, char *argv[]) {
 			int child = *(int*)vector_get(pid_info,j);
 
 			kill(child, SIGINT);
-			printf("%d", child);
+			//printf("%d", child);
 				
 		}
 		vector_clear(pid_info);
