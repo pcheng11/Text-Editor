@@ -333,7 +333,7 @@ int shell(int argc, char *argv[]) {
 				{
 					fflush(stdout);
 					buffer[len-1]= '\0';
-
+					signal(SIGCHILD, SIGDFL);
 				 	 child = fork();
 				 	
   					if (child == -1) 
@@ -436,7 +436,7 @@ int shell(int argc, char *argv[]) {
 			buffer[len-1] = '\0';
 			char **token_array;
 			size_t num_tokens;
-			token_array = strsplit(buffer, " ", &num_tokens);
+			token_array = strsplit(buffer, " &", &num_tokens);
 
 		//see what is the command
 		//ps
