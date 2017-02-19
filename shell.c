@@ -335,7 +335,7 @@ int shell(int argc, char *argv[]) {
 				{
 					fflush(stdout);
 					buffer[len-1]= '\0';
-					signal(SIGCHLD, SIG_DFL);
+				//	signal(SIGCHLD, SIG_DFL);
 				 	 child = fork();
 				 	
   					if (child == -1) 
