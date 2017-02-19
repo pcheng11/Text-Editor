@@ -36,7 +36,7 @@ void *string_default_constructor(void) {
 }
 
 static int exit_ = 0;
-static int clean = 0;
+//static int clean = 0;
 static pid_t child;
 static pid_t child_b;
 
