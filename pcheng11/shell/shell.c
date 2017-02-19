@@ -52,9 +52,9 @@ void intHandler(int r) {
 void cleanup(int signal)
 {
 	while(waitpid((pid_t)(-1),0,WNOHANG) > 0) {}
-		fflush(stdout);
+		//fflush(stdout);
 
-		printf("yes\n");
+		//printf("yes\n");
 
 
 }
