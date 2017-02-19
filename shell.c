@@ -49,20 +49,8 @@ void intHandler(int r) {
   // vector_erase(pid_info, 0);
    fflush(stdout);
 }
+void cleanup(int signal);
 
-
-void cleanup(int signal) {
-  
-  int status;
-  waitpid(child_b, &status, 0);
- //  kill(child_b, SIGINT);
-//  printf("clean");
-  clean = 1;
- 
-   fflush(stdout);
-
-
-}
 
 int shell(int argc, char *argv[]) {
   // TODO: This is the entry point for your shell.
@@ -73,6 +61,20 @@ int shell(int argc, char *argv[]) {
 		print_usage();
 		return 0;
 	}
+	
+	void cleanup(int signal) {
+  
+  //int status;
+  //waitpid(child_b, &status, 0);
+ //  kill(child_b, SIGINT);
+//  printf("clean");
+ // clean = 1;
+ while(waitpid((pid_t)(-1),0,WNOHANG) > 0) {}
+  // fflush(stdout);
+
+
+}
+
 	
 // create 3 vectors to keep track of process info
 	vector* pid_info = int_vector_create();
