@@ -689,7 +689,7 @@ int shell(int argc, char *argv[]) {
 				{	
 					buffer[len-1]= '\0';
 					child = fork();
-			 		process b;
+			 		
 				 	
   					if (child == -1) 
  	 					print_fork_failed();
