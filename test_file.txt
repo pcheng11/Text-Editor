@@ -12,4 +12,3 @@ kill 1980
 ps
 /bin/ls
 ps
-exit
