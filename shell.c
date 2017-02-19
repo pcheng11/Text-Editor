@@ -146,6 +146,9 @@ int shell(int argc, char *argv[]) {
 				vector_clear(pid_info);
 				vector_clear(command_info);
 				vector_clear(status_info);
+				free(pid_info);
+				free(command_info);
+				free(status_info);
 				for(int i = 0; i<(int) num_tokens; i++)
    				{
   					free(token_array[i]);
