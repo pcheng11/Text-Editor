@@ -316,14 +316,15 @@ int shell(int argc, char *argv[]) {
   					if(child_b == 0) 
   					{ 
  		   				execvp(token_array[0], token_array);
+ 		   				vector_pop_back(pid_info);
+						vector_pop_back(status_info);
+						vector_pop_back(command_info);
     					print_exec_failed(buffer);
 
 
     				
 			
-   						vector_pop_back(pid_info);
-						vector_pop_back(status_info);
-						vector_pop_back(command_info);
+   						
     					break;
    		 				
    					} 
