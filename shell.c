@@ -353,6 +353,15 @@ int shell(int argc, char *argv[]) {
     					execvp(token_array[0], token_array);
     				
     					print_exec_failed(buffer);
+    						for(int i = 0; i<(int) num_tokens; i++)
+   			{
+   			//puts("L");
+  				free(token_array[i]);
+  			}
+  			free(token_array);
+	
+  			free(buffer);
+
     					break;
   	 				} 
   					else 
