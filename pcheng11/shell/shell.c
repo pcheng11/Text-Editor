@@ -110,7 +110,7 @@ int shell(int argc, char *argv[]) {
 			char *buffer = NULL;
 			size_t size = 0;
 			size_t cd = getline(&buffer, &size, stdin);
-			while(*buffer == '\n')
+	/*	while(*buffer == '\n')
 			{
 				
 				char *directory = getcwd(NULL, 0);
@@ -118,6 +118,7 @@ int shell(int argc, char *argv[]) {
 				free(directory);
 				cd = getline(&buffer, &size, stdin);
 			}
+	*/
 			size_t len = strlen(buffer);
 		
 			char **token_array;
