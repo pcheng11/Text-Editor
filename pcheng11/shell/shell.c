@@ -332,7 +332,7 @@ int shell(int argc, char *argv[]) {
   					if(child_b == 0) 
   					{ 
  		   				execvp(token_array[0], token_array);
- 		   				//fail
+
     					print_exec_failed(buffer);
 
     					for(int i = 0; i<(int) num_tokens; i++)
@@ -343,12 +343,8 @@ int shell(int argc, char *argv[]) {
 	
   								free(buffer);
 
-								//vector_destroy(pid_info);
-								//vector_destroy(command_info);
-								//vector_destroy(status_info);
-
     				
-    					exit(1);
+    					break;
    		 				
    					} 
   					else 
@@ -391,12 +387,7 @@ int shell(int argc, char *argv[]) {
 	
   								free(buffer);
 
-
-								vector_destroy(pid_info);
-								vector_destroy(command_info);
-								vector_destroy(status_info);
-
-    							exit(1);
+    							break;
   	 				} 
   					else 
   					{ 
