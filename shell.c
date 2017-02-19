@@ -316,13 +316,8 @@ int shell(int argc, char *argv[]) {
   					if(child_b == 0) 
   					{ 
  		   				execvp(token_array[0], token_array);
- 		   				
+
     					print_exec_failed(buffer);
-
-
-    				
-			
-   						
     					break;
    		 				
    					} 
