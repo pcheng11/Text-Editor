@@ -317,7 +317,8 @@ int shell(int argc, char *argv[]) {
   					{ 
  		   				execvp(token_array[0], token_array);
     					print_exec_failed(buffer);
-   		 				return 0;
+    					
+   		 				
    					} 
   					else 
   					{ 
