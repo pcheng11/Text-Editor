@@ -110,7 +110,7 @@ int shell(int argc, char *argv[]) {
 			char *buffer = NULL;
 			size_t size = 0;
 			size_t cd = getline(&buffer, &size, stdin);
-	/*	while(*buffer == '\n')
+		while(*buffer == '\n')
 			{
 				
 				char *directory = getcwd(NULL, 0);
@@ -118,7 +118,7 @@ int shell(int argc, char *argv[]) {
 				free(directory);
 				cd = getline(&buffer, &size, stdin);
 			}
-	*/
+	
 			size_t len = strlen(buffer);
 		
 			char **token_array;
@@ -317,7 +317,7 @@ int shell(int argc, char *argv[]) {
   					{ 
  		   				execvp(token_array[0], token_array);
     					print_exec_failed(buffer);
-   		 				break;
+   		 				return 0;
    					} 
   					else 
   					{ 
@@ -432,6 +432,16 @@ int shell(int argc, char *argv[]) {
 			char *directory = getcwd(NULL, 0);
 			print_prompt(directory, main_pro);
 			free(directory);
+
+				while(*buffer == '\n')
+			{
+				
+				char *directory = getcwd(NULL, 0);
+				print_prompt(directory, main_pro);
+				free(directory);
+				cd = getline(&buffer, &length, buffer);
+			}
+
 			int len = strlen(buffer);
 			char *r_temp = strdup(buffer);
 			if(r_temp[len-1] == '\n')
