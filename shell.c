@@ -279,15 +279,18 @@ int shell(int argc, char *argv[]) {
 				if(*a == '/')
 				{
 					char * b = get_full_path(a);
-					if(opendir(b)== NULL)
+					DIR * re = opendir(b);
+					if(re == NULL)
 					{
 						print_no_directory(b);
 						free(b);
+						
 					}
 					else
 					{
 						chdir(b);
 						free(b);
+						free(re);
 					}
 				}
 
