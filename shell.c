@@ -110,6 +110,14 @@ int shell(int argc, char *argv[]) {
 			char *buffer = NULL;
 			size_t size = 0;
 			size_t cd = getline(&buffer, &size, stdin);
+			if((int)cd == -1)
+			{
+				vector_destroy(pid_info);
+				vector_destroy(command_info);
+				vector_destroy(status_info);
+				free(buffer);
+				return 0;
+			}
 		while(*buffer == '\n')
 			{
 				
@@ -135,7 +143,7 @@ int shell(int argc, char *argv[]) {
 		
 			}
 		//exit
-			else if(strcmp(buffer, "exit\n") == 0 || (int)cd == -1 )
+			else if(strcmp(buffer, "exit\n") == 0 ) 
 			{
 				for(size_t j = 1; j < vector_size(pid_info); j++)
 				{
@@ -318,6 +326,16 @@ int shell(int argc, char *argv[]) {
  		   				execvp(token_array[0], token_array);
 
     					print_exec_failed(buffer);
+
+    					for(int i = 0; i<(int) num_tokens; i++)
+   							{
+  								free(token_array[i]);
+  							}
+  								free(token_array);
+	
+  								free(buffer);
+
+    				
     					break;
    		 				
    					} 
@@ -354,15 +372,14 @@ int shell(int argc, char *argv[]) {
     				
     					print_exec_failed(buffer);
     						for(int i = 0; i<(int) num_tokens; i++)
-   			{
-   			//puts("L");
-  				free(token_array[i]);
-  			}
-  			free(token_array);
+   							{
+  								free(token_array[i]);
+  							}
+  								free(token_array);
 	
-  			free(buffer);
+  								free(buffer);
 
-    					break;
+    							break;
   	 				} 
   					else 
   					{ 
@@ -694,6 +711,15 @@ int shell(int argc, char *argv[]) {
     					execvp(token_array[0], token_array);
     				
     					print_exec_failed(buffer);
+    					for(int i = 0; i<(int) num_tokens; i++)
+   							{
+  								free(token_array[i]);
+  							}
+  								free(token_array);
+	
+  								free(buffer);
+
+    							
     					break;
   	 				} 
   					else 
@@ -728,6 +754,15 @@ int shell(int argc, char *argv[]) {
     					execvp(token_array[0], token_array);
     			
   	  					print_exec_failed(buffer);
+  	  					for(int i = 0; i<(int) num_tokens; i++)
+   							{
+  								free(token_array[i]);
+  							}
+  								free(token_array);
+	
+  								free(buffer);
+
+    	
     					break;
   	 				} 
   					else 
