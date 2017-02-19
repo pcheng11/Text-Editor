@@ -115,7 +115,7 @@ int shell(int argc, char *argv[]) {
 		
 			char **token_array;
 			size_t num_tokens;
-			token_array = strsplit(buffer, " \n", &num_tokens);
+			token_array = strsplit(buffer, " \n&", &num_tokens);
 		//see what is the command
 		//ps
 		
