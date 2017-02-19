@@ -284,6 +284,7 @@ int shell(int argc, char *argv[]) {
 					{
 						print_no_directory(b);
 						free(b);
+						free(re);
 						
 					}
 					else
