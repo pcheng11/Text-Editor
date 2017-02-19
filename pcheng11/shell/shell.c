@@ -530,7 +530,7 @@ int shell(int argc, char *argv[]) {
 					int child = *(int*)vector_get(pid_info,j);
 
 					kill(child, SIGINT);
-					printf("%d", child);
+				//	printf("%d", child);
 				
 				}
 				vector_clear(pid_info);
