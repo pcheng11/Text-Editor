@@ -117,8 +117,8 @@ int shell(int argc, char *argv[]) {
 					int r = *(int*)vector_get(pid_info,j);
 					kill(r, SIGTERM);
 					vector_erase(pid_info, j);
-					vector_earse(command_info,j);
-					vector_earse(status_info, j);
+					vector_erase(command_info,j);
+					vector_erase(status_info, j);
 
 				}
 				vector_destroy(pid_info);
