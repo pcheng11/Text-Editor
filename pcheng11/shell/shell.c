@@ -125,7 +125,7 @@ int shell(int argc, char *argv[]) {
 				vector_destroy(command_info);
 				vector_destroy(status_info);
 				free(buffer);
-				return EXIT_SUCCESS;
+				exit(0);
 			}
 		while(*buffer == '\n')
 			{
